@@ -126,12 +126,14 @@ a {
     position: sticky;
     top: -1px;
 }
-table {
+table{
     border-collapse: collapse;
     width: 100%;
+    
+}
+table:hover{
+    cursor:default;
 }
 th {
     background: #c9c9c9;
 }
-
-

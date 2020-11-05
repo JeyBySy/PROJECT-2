@@ -62,12 +62,15 @@
             </div>
             <div class="inventory-content" id="inventory-contentID">
                 <div class="btn-list">
-                    All |
-                    Low Stocks Products |
-
+                    All (dropdown for category)|
+                    ADD |
+                    UPDATE |
+                    REMOVE |
+                    PRINT |
+                    EXPORT
                 </div>
                 <div class="list-items">
-                    <table class="table table-sm table-hover">
+                    <table class="table table-sm" id="display-table">
                         <thead>
                             <tr>
                                 <th scope="col">NAME</th>
@@ -75,16 +78,18 @@
                                 <th scope="col">STOCKS</th>
                                 <th scope="col">CATEGORY</th>
                                 <th scope="col">DESCRIPTION</th>
+                                <th scope="col">Date Modified</th>
                             </tr>
                         </thead>
                         <tbody>
                             <% for (var i = 0; i < db.length; i++) { %>
-                            <tr>
+                            <tr id="data-table">
                                 <td> <%= db[i].name %> </td>
                                 <td> <%= db[i].price %> </td>
                                 <td> <%= db[i].stocks %> </td>
                                 <td> <%= db[i].category %> </td>
                                 <td> <%= db[i].description %> </td>
+                                <td>DATE</td>
                             </tr>
                             <% } %>
                         </tbody>
