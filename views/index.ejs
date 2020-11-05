@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Beylands Admin</title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script> -->
+    <link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
+    <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+
+
+    <!-- <link rel="stylesheet" href="public/css/style.css"> -->
+    <link rel="stylesheet" href="public/css/index.css">
+    <!-- <link rel="stylesheet" href="./css/stylesheet.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Open+Sans" rel="stylesheet">
+    </body>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logos">
+            <div class="logos-word">
+                <h1>BEY<span>LANDS</span><sub>ADMIN</sub></h1>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="side-container">
+            <div class="btn-dash" id="dashID">
+                DASHBOARD
+            </div>
+            <div class="btn-orders" id="ordersID">
+                ORDERS
+            </div>
+            <div class="btn-inventory" id="inventoryID">
+                INVENTORY
+            </div>
+            <div class="btn-logout" id="logoutID">
+                <a href="/logout">LOGOUT</a>
+            </div>
+        </div>
+
+        <div class="main-container">
+            <!-- ORDER LAYOUT -->
+            <div class="dash-content" id="dash-contentID">
+                DASHBOARD
+            </div>
+            <div class="order-content" id="order-contentID">
+                ORDER
+            </div>
+            <div class="inventory-content" id="inventory-contentID">
+                <div class="btn-list">
+                    All |
+                    Low Stocks Products |
+
+                </div>
+                <div class="list-items">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">NAME</th>
+                                <th scope="col">PRICE</th>
+                                <th scope="col">STOCKS</th>
+                                <th scope="col">CATEGORY</th>
+                                <th scope="col">DESCRIPTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (var i = 0; i < db.length; i++) { %>
+                            <tr>
+                                <td> <%= db[i].name %> </td>
+                                <td> <%= db[i].price %> </td>
+                                <td> <%= db[i].stocks %> </td>
+                                <td> <%= db[i].category %> </td>
+                                <td> <%= db[i].description %> </td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/public/js/admin-page.js"></script>
+</body>
+
+</html>
