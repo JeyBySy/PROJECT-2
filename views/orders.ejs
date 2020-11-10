@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Beylands Admin</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="public/css/style.css"> -->
+    <link rel="stylesheet" href="public/css/index.css">
+    <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="public/js/bootstrap.bundle.js"></script> -->
+
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Open+Sans" rel="stylesheet">
+    </body>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logos">
+            <div class="logos-word">
+                <h1>BEY<span>LANDS</span><sub>ADMIN</sub></h1>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="side-container">
+            <a href="/dashboard">
+                <div class="btn-dash" id="dashID">
+                    dashboard
+                </div>
+            </a>
+            <hr>
+            <a href="#">
+                <div class="btn-orders" id="ordersID">
+                    Orders
+                    <hr>
+                </div>
+            </a>
+            <a href="#">
+                <div class="btn-product" id="productID">
+                    products
+                </div>
+            </a>
+            <hr>
+            <div class="btn-product-overlay" id="btn-product-overlayID">
+                <a href="/show-product">
+                    <div class="btn-product-overlay-1" id="show-productID">
+                        <div class="text">
+                            Show Products
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="btn-product-overlay-2" id="show-manageID">
+                        <div class="text">
+                            Manage Products
+                        </div>
+                    </div>
+                </a>
+                <hr style="margin-left: -15px;">
+
+            </div>
+            <a href="/logout">
+                <div class="btn-logout" id="logoutID">
+                    LOGOUT
+                </div>
+            </a>
+        </div>
+
+        <div class="main-container">
+            <div class="order-content" id="order-contentID">
+                ORDER
+            </div>
+        </div>
+    </div>
+
+    <script src="/public/js/admin-page.js"></script>
+
+
+</body>
+
+</html>

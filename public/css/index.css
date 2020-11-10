@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+hr{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
 .logos {
     cursor: default;
     margin: 1rem;
@@ -18,7 +22,6 @@ h1 {
     margin: auto;
     /* text-shadow: 1px 3px 2px rgba(10, 0, 0, 0.801); */
 }
-
 sub {
     font-size: 19px;
     letter-spacing: 3px;
@@ -47,8 +50,10 @@ span {
     width: 15%;
     height: 90%;
     background:#39ca74;
-    z-index: 1;
-    text-align: center;
+    z-index: 0;
+    text-transform: capitalize;
+    font-size: 19px;
+    /* letter-spacing: 2px; */
 }
 .main-container{
     position: absolute;
@@ -58,34 +63,11 @@ span {
     background:white;
     /* background:#39ca74; */
 }
-.btn-orders,
-.btn-orders:hover{
-    color: rgb(56, 56, 56);
-    cursor: pointer;
-}
-.order-content{
-   width: 100%;
-   position: absolute;
-   top: 0;
-   bottom: 0;
-   /* background: white; */
-   display: none;
-}
-.btn-inventory,
-.btn-inventory:hover{
-      color: rgb(56, 56, 56);
-      cursor: pointer;
-}
-a:hover,
-a {
-    text-decoration: none;
-    color: black;
-}
 .btn-dash,
 .btn-dash:hover {
-    color: rgb(56, 56, 56);
     cursor: pointer;
 }
+
 .dash-content {
     width: 100%;
     position: absolute;
@@ -94,13 +76,41 @@ a {
     /* background: white; */
     display: flex;
 }
-.inventory-content {
+.btn-orders,
+.btn-orders:hover{
+    cursor: pointer;
+}
+
+.btn-product,
+.btn-product:hover{
+      cursor: pointer;
+}
+a:hover,
+a {
+    text-decoration: none;
+    color: black;
+}
+.btn-product-overlay{
+    width: 100%;
+    display: none;
+    border-width: 1px;
+    text-align:start;
+}
+.text{
+    margin: 0.5rem;
+    padding: 0;
+}
+.btn-product-overlay-1:hover,
+.btn-product-overlay-2:hover {
+    cursor: pointer;
+    background: #eeeeee;    
+}
+.product-content {
     width: 100%;
     position: absolute;
     top: 0;
     bottom: 0;
     /* background: white; */
-    display: none;
 }
 .btn-list{
     width: 100%;
@@ -108,10 +118,25 @@ a {
     border-bottom:#39ca74;
     border-bottom-width: 5px;
     border-bottom-style: inset;
-    background: white;
+    background: rgb(255, 255, 255);
     padding: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
-.inventory-content button{
+.btns{
+    max-width: 220px;
+    text-align: center;
+    text-transform: uppercase;
+    border-color: white;
+    border-width: 1px;
+}
+.dropdown-menu a{
+    /* background: green; */
+    display: block;
+    text-align: center;
+}
+
+.product-content button{
     width: 80px;
     height: 10%;
 }

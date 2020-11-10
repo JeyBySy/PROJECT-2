@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Beylands Admin</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/showProduct.css">
+    <link rel="stylesheet" href="public/css/index.css">
+    <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="public/js/bootstrap.bundle.js"></script> -->
+
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Open+Sans" rel="stylesheet">
+    </body>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logos">
+            <div class="logos-word">
+                <h1>BEY<span>LANDS</span><sub>ADMIN</sub></h1>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="side-container">
+            <!-- DASHBOARD -->
+            <a href="/dashboard">
+                <div class="btn-dash" id="dashID">
+                    dashboard
+                </div>
+            </a>
+            <hr>
+            <!-- ORDERS -->
+            <a href="/orders">
+                <div class="btn-orders" id="ordersID">
+                    Orders
+                </div>
+            </a>
+            <hr>
+            <!-- PRODUCT -->
+            <a href="#">
+                <div class="btn-product" id="productID">
+                    products
+                </div>
+            </a>
+            <hr>
+            <div class="btn-product-overlays" id="btn-product-overlayID">
+                <!-- OVERLAY SHOW PRODUCT -->
+                <a href="/show-product">
+                    <div class="btn-product-overlay-1" id="show-productID">
+                        <div class="text">
+                            Show Products
+                        </div>
+                    </div>
+                </a>
+                <!-- OVERLAY MANAGE PRODUCT -->
+                <a href="#">
+                    <div class="btn-product-overlay-2" id="show-manageID">
+                        <div class="text">
+                            Manage Products
+                        </div>
+                    </div>
+                </a>
+                <hr style="margin-left: -15px;">
+            </div>
+
+            <a href="/logout">
+                <div class="btn-logout" id="logoutID">
+                    LOGOUT
+                </div>
+            </a>
+        </div>
+        <!-- CONTENT -->
+        <div class="main-container">
+            <div class="product-content" id="product-contentID">
+                <div class="btn-list">
+                    <div class="dropdown">
+                        <div class="btn-group">
+                            <a class="btns btn dropdown-toggle" data-toggle="dropdown">
+                                ALL <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">ALL</a></li>
+                                <div class="dropdown-divider"></div>
+                                <li><a href="#">Janitorial Supplies</a></li>
+                                <div class="dropdown-divider"></div>
+                                <li><a href="#">Commercial Products</a></li>
+                                <div class="dropdown-divider"></div>
+                                <li><a href="#">Cleaning Chemicals</a></li>
+                                <div class="dropdown-divider"></div>
+                                <li><a href="#">Cleaning Equipments</a></li>
+                                <div class="dropdown-divider"></div>
+                                <li><a href="#">Organic Products</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="btn-list-ARU">
+                        <button type="button" class="btn btn-primary">ADD</button>
+                        <button type="button" class="btn btn-warning">UPDATE</button>
+                        <button type="button" class="btn btn-danger">REMOVE</button>
+                    </div>
+                    PRINT |
+                    EXPORT
+                </div>
+                <div class="list-items">
+                    <table class="table table-sm" id="display-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">NAME</th>
+                                <th scope="col">PRICE</th>
+                                <th scope="col">STOCKS</th>
+                                <th scope="col">CATEGORY</th>
+                                <th scope="col">DESCRIPTION</th>
+                                <th scope="col">Date Modified</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (var i = 0; i < db.length; i++) { %>
+                            <tr id="data-table">
+                                <td> <%= db[i].name %> </td>
+                                <td> <%= db[i].price %> </td>
+                                <td> <%= db[i].stocks %> </td>
+                                <td> <%= db[i].category %> </td>
+                                <td> <%= db[i].description %> </td>
+                                <td>DATE</td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/public/js/admin-page.js"></script>
+
+
+</body>
+
+</html>

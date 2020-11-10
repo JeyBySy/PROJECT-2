@@ -35,6 +35,7 @@ app.use(cookieSession({
     keys: ['key1', 'key2']
   }))
 
+//If not register then go to the login page 
 const isLogin = (req,res,next)=>{
   if(req.user){
     next();
@@ -42,9 +43,11 @@ const isLogin = (req,res,next)=>{
      res.redirect('/')
   }
 }
+
+// If register then go to the admin page
 const isNotLogin = (req,res,next)=>{
   if(req.user){
-    res.redirect('/admin-page')
+    res.redirect('/dashboard')
   }
   next()
 }
@@ -56,13 +59,13 @@ app.get('/',isNotLogin,(req,res)=>{
   // res.render('index.ejs',{layout: false})
 })
 
-app.get('/admin-page',isLogin,async(req,res)=>{
+app.get('/dashboard',isLogin,async(req,res)=>{
     // res.render('index.ejs',{layout: false})
     const db = await products.find({})
     res.render('index.ejs',{db})
 })
 
-app.post('/admin-page',async(req,res)=>{
+app.post('/dashboard',async(req,res)=>{
     // res.render('index.ejs',{layout: false})
     const db = await products.find({})
     res.render('index.ejs',{db})
@@ -73,7 +76,7 @@ app.get('/google',isNotLogin,passport.authenticate('google',{ scope: ['profile',
 
 app.get('/google/callback',isNotLogin,passport.authenticate('google', { failureRedirect: '/' }),(req, res)=> {
     if(req.user._json.email == "companybeylands@gmail.com"){
-    res.redirect('/admin-page');
+    res.redirect('/dashboard');
     }else{
       req.session=null
       req.logout();
@@ -90,6 +93,15 @@ app.get('/logout',(req,res)=>{
    res.redirect('/')
 })
 
+app.get('/orders',isLogin, async(req,res)=>{
+  const db = await products.find({})
+  res.render('orders.ejs',{db})
+})
+
+app.get('/show-product',isLogin,async(req,res)=>{
+  const db = await products.find({})
+  res.render('showProduct.ejs',{db})
+})
 app.listen(port,() => {
     console.log("Success to 3000")
 })
