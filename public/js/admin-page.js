@@ -10,19 +10,20 @@ const show_product = document.getElementById('show-productID')
 
 product_btn.addEventListener('click',()=>{
     if(overlay_product.style.display == 'inline'){
-        overlay_product.style.display='none'
+        overlay_product.style.display='none'        
         overlay_product.style.position='unset'
-        logout_btn.style.marginTop='0'
-
+        logout_btn.style.marginTop='0'      
     }else{
         overlay_product.style.display='inline'
         overlay_product.style.position='absolute'
         overlay_product.style.top='127px'
         logout_btn.style.marginTop='89px'
+     
     }
 })
 
 const openCont = ()=>{
+    // SHOW TABLE IN SHOW PRODUCT BTN
     show_product.addEventListener('click',()=>{
         if(overlay_product.style.display != 'inline'){
             overlay_product.style.display='inline'

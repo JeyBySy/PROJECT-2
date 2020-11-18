@@ -65,11 +65,10 @@ app.get('/dashboard',isLogin,async(req,res)=>{
     res.render('index.ejs',{db})
 })
 
-app.post('/dashboard',async(req,res)=>{
+app.post('/dashboards',(req,res)=>{
     // res.render('index.ejs',{layout: false})
-    const db = await products.find({})
-    res.render('index.ejs',{db})
-// console.log(db)
+    res.render('index.ejs',{layout:false})
+
 })
 
 app.get('/google',isNotLogin,passport.authenticate('google',{ scope: ['profile', 'email']}))
@@ -93,9 +92,9 @@ app.get('/logout',(req,res)=>{
    res.redirect('/')
 })
 
-app.get('/orders',isLogin, async(req,res)=>{
-  const db = await products.find({})
-  res.render('orders.ejs',{db})
+app.get('/orders', isLogin,(req,res)=>{
+  // const db = await products.find({})
+  res.render('orders.ejs',{layout:false})
 })
 
 app.get('/show-product',isLogin,async(req,res)=>{

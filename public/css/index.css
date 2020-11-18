@@ -7,13 +7,6 @@ hr{
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
-.logos {
-    cursor: default;
-    margin: 1rem;
-}
-.logos-word {
-    width: 100px;
-}
 h1 {
     font-family: 'Alfa Slab One', cursive;
     color: #39ca74;
@@ -30,6 +23,14 @@ sub {
 
 span {
     color: yellow;
+}
+.logos {
+    cursor: default;
+    margin: 1rem;
+}
+
+.logos-word {
+    width: 100px;
 }
 .header {
     width: 100%;
@@ -67,98 +68,16 @@ span {
 .btn-dash:hover {
     cursor: pointer;
 }
-
 .dash-content {
     width: 100%;
     position: absolute;
     top: 0;
     bottom: 0;
     /* background: white; */
-    display: flex;
-}
-.btn-orders,
-.btn-orders:hover{
-    cursor: pointer;
-}
-
-.btn-product,
-.btn-product:hover{
-      cursor: pointer;
+    display: inline;
 }
 a:hover,
 a {
     text-decoration: none;
     color: black;
-}
-.btn-product-overlay{
-    width: 100%;
-    display: none;
-    border-width: 1px;
-    text-align:start;
-}
-.text{
-    margin: 0.5rem;
-    padding: 0;
-}
-.btn-product-overlay-1:hover,
-.btn-product-overlay-2:hover {
-    cursor: pointer;
-    background: #eeeeee;    
-}
-.product-content {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    /* background: white; */
-}
-.btn-list{
-    width: 100%;
-    height: auto;
-    border-bottom:#39ca74;
-    border-bottom-width: 5px;
-    border-bottom-style: inset;
-    background: rgb(255, 255, 255);
-    padding: 0.5rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-.btns{
-    max-width: 220px;
-    text-align: center;
-    text-transform: uppercase;
-    border-color: white;
-    border-width: 1px;
-}
-.dropdown-menu a{
-    /* background: green; */
-    display: block;
-    text-align: center;
-}
-
-.product-content button{
-    width: 80px;
-    height: 10%;
-}
-.list-items{
-    width: 100%;
-    height: 90%;
-    background:#c9c9c94d;
-    overflow: auto;
-     border-collapse: collapse;
-}
-.list-items thead th {
-    position: sticky;
-    top: -1px;
-}
-table{
-    border-collapse: collapse;
-    width: 100%;
-    
-}
-table:hover{
-    cursor:default;
-}
-th {
-    background: #c9c9c9;
 }

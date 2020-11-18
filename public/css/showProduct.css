@@ -1,6 +1,6 @@
 .btn-product-overlays{
      width: 100%;
-     display: inline;
+     display: none;
      border-width: 1px;
      text-align:start;
 }
