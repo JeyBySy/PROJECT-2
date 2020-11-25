@@ -21,29 +21,18 @@
 .product-content {
     width: 100%;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    /* background: white; */
+
 }
 .btn-list {
+    position: relative;
+    bottom: 0;
     width: 100%;
-    height: auto;
-    border-bottom: #39ca74;
-    border-bottom-width: 5px;
-    border-bottom-style: inset;
+    height: fit-content;
     background: rgb(255, 255, 255);
-    padding: 0.5rem;
+    padding:5px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
-.btns {
-    max-width: 220px;
-    text-align: center;
-    text-transform: uppercase;
-    border-color: white;
-    border-width: 1px;
-}
-
 .dropdown-menu a {
     /* background: green; */
     display: block;
@@ -54,16 +43,17 @@
     background: gray;
 } */
 .product-content button {
-    width: 80px;
-    height: 10%;
+    width: auto;
 }
 
 .list-items {
-    width: 100%;
-    height: 90%;
-    background: #c9c9c94d;
-    overflow: auto;
+    width: 97%;
+    height:100%;
     border-collapse: collapse;
+    margin: 1rem;
+    font-size: 14px;
+    background: rgb(255, 255, 255);
+ 
 }
 
 .list-items thead th {
@@ -73,16 +63,32 @@
 
 table {
     border-collapse: collapse;
-    width: 100%;
-
+    width: 100%; 
+    text-align: center;
+  
 }
-
 table:hover {
     cursor: default;
 }
 
 th {
-    background: #c9c9c9;
+    background: #ffffff;
+    text-align: center;
+    text-transform: capitalize;
+
+}
+td{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 30px;
+}
+.dataTables_length{
+     /* display: none; */
+     font-size: 15px;
+}
+.dataTables_filter input{
+    border-radius: 5px;
 }
 
 /* manage product */

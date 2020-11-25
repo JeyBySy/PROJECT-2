@@ -36,6 +36,7 @@ span {
     width: 100%;
     height: auto;
     background: linear-gradient(180deg, #282828, #424242);
+    /* background: white; */
     position: fixed;
     z-index: 2;
     top: 0;
@@ -60,7 +61,8 @@ span {
     position: absolute;
     right: 0;
     width: 85%;
-    height: 88%;
+    height: fit-content;
+    /* overflow-y: auto; */
     background:white;
     /* background:#39ca74; */
 }

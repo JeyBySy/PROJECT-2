@@ -2,3 +2,40 @@
 .btn-orders:hover {
     cursor: pointer;
 }
+.order-content-btn{
+    width: 100%;
+    height: auto;
+    background: white;
+    position:fixed;
+    top: 83px;
+    z-index: 1;
+}
+.order-content-info{
+    width: 95%;
+    height: auto;
+   margin: auto;
+   margin-top: 45px;
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+.card{
+     width: 100%;
+     height: auto;
+    margin: 0.5rem;
+    border: rgba(255, 255, 255, 0.481);
+    border-width: 3px;
+    border-style: outset;
+    border-radius: 5px;
+}
+.card hr {
+    margin-right: 2rem;
+}
+.card-body{
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr;
+}
+.text{
+    font-size: 20px;
+}

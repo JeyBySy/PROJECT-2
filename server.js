@@ -68,7 +68,6 @@ app.get('/dashboard',isLogin,async(req,res)=>{
 app.post('/dashboards',(req,res)=>{
     // res.render('index.ejs',{layout: false})
     res.render('index.ejs',{layout:false})
-
 })
 
 app.get('/google',isNotLogin,passport.authenticate('google',{ scope: ['profile', 'email']}))
@@ -91,6 +90,7 @@ app.get('/logout',(req,res)=>{
   res.clearCookie('admin-session.sig', { path: '/' });
    res.redirect('/')
 })
+// IF HAV INTERNET
 
 app.get('/orders', isLogin,(req,res)=>{
   // const db = await products.find({})
@@ -104,3 +104,14 @@ app.get('/show-product',isLogin,async(req,res)=>{
 app.listen(port,() => {
     console.log("Success to 3000")
 })
+
+// IF NO INTERNET
+// app.get('/orders',(req,res)=>{
+//   // const db = await products.find({})
+//   res.render('orders.ejs',{layout:false})
+// })
+
+// app.get('/show-product',async(req,res)=>{
+//   const db = await products.find({})
+//   res.render('showProduct.ejs',{db})
+// })

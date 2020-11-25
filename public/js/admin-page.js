@@ -30,6 +30,7 @@ const openCont = ()=>{
             overlay_product.style.position='absolute'
             overlay_product.style.top='127px'
             logout_btn.style.marginTop='86px'
+
         }else{
             // overlay_product.style.display='none'
             overlay_product.style.position='unset'
@@ -45,38 +46,19 @@ const openCont = ()=>{
 }
 openCont();
 
-//DROP DOWN JS
-$(".dropdown-menu li a").click(function(){
-  
-  $(".btns:first-child").html($(this).text()+' <span class="caret"></span>');
-  
-});
-// highlight_row()
-// function highlight_row() {
-//     var table = document.getElementById('display-table');
-//     var cells = table.getElementsByTagName('td');
+// EDIT, DELETE ON TABLE
+const btn_edit = document.getElementById("btn-editID")
+const table_data = document.getElementById("display-table")
 
-//     for (var i = 0; i < cells.length; i++) {
-//         // Take each cell
-//         var cell = cells[i];
-//         // do something on onclick event for cell
-//         cell.onclick = function () {
-//             // Get the row id where the cell exists
-//             var rowId = this.parentNode.rowIndex;
 
-//             var rowsNotSelected = table.getElementsByTagName('tr');
-//             for (var row = 0; row < rowsNotSelected.length; row++) {
-//                 rowsNotSelected[row].style.backgroundColor = "";
-//                 rowsNotSelected[row].classList.remove('selected');
-//             }
-//             var rowSelected = table.getElementsByTagName('tr')[rowId];
-//             rowSelected.style.backgroundColor = "yellow";
-//             rowSelected.className += "table";
-
-//             msg = 'The ID of the company is: ' + rowSelected.cells[0].innerHTML;
-//             msg += '\nThe cell value is: ' + this.innerHTML;
-//             alert(msg);
+// function edit_func(x) {
+//     // alert(table_data.rows[0].cells.item(1).innerHTML);
+//     // alert("Row index is: " + x.rowIndex);
+//     var _row = table_data.rows.length;
+//     for(let i = 0;i<= _row;i++){
+//         if(x.rowIndex == i){
+//             alert(table_data.rows[i].cells.item(1).innerHTML);
 //         }
 //     }
-
 // }
+

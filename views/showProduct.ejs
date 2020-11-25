@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Beylands Admin</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -12,6 +11,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
     </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/css/showProduct.css">
     <link rel="stylesheet" href="public/css/index.css">
@@ -66,7 +73,7 @@
                 <a href="#">
                     <div class="btn-product-overlay-2" id="show-manageID">
                         <div class="text">
-                            Manage Products
+                            Manage Attributes
                         </div>
                     </div>
                 </a>
@@ -82,68 +89,101 @@
         <!-- CONTENT -->
         <div class="main-container">
             <div class="product-content" id="product-contentID">
+                Show Product
                 <div class="btn-list">
-                    <div class="dropdown">
-                        <div class="btn-group">
-                            <a class="btns btn dropdown-toggle" data-toggle="dropdown">
-                                ALL <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">ALL</a></li>
-                                <div class="dropdown-divider"></div>
-                                <li><a href="#">Janitorial Supplies</a></li>
-                                <div class="dropdown-divider"></div>
-                                <li><a href="#">Commercial Products</a></li>
-                                <div class="dropdown-divider"></div>
-                                <li><a href="#">Cleaning Chemicals</a></li>
-                                <div class="dropdown-divider"></div>
-                                <li><a href="#">Cleaning Equipments</a></li>
-                                <div class="dropdown-divider"></div>
-                                <li><a href="#">Organic Products</a></li>
-                            </ul>
-                        </div>
-                    </div>
+
                     <div class="btn-list-ARU">
-                        <button type="button" class="btn btn-primary">ADD</button>
-                        <button type="button" class="btn btn-warning">UPDATE</button>
-                        <button type="button" class="btn btn-danger">REMOVE</button>
+                        <!-- MODAL FOR ADDING PRODUCT -->
+                        <div class="modal fade" tabindex="-1" role="dialog" id="addModal">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Modal body text goes here.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">
+                            Add Product
+                        </button>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addModal">
+                            Edit Product
+                        </button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addModal">
+                            Remove Product
+                        </button>
                     </div>
-                    PRINT |
-                    EXPORT
+                    <div class="print-export" style="text-align:end;">
+                        <button>
+                            PRINT
+                        </button>
+                        <button>
+                            EXPORT
+                        </button>
+                    </div>
                 </div>
+                <hr>
                 <div class="list-items">
-                    <table class="table table-sm" id="display-table">
+
+                    <table class="table table-sm table-striped" id="display-table">
                         <thead>
                             <tr>
-                                <th scope="col">NAME</th>
-                                <th scope="col">PRICE</th>
-                                <th scope="col">STOCKS</th>
-                                <th scope="col">CATEGORY</th>
-                                <th scope="col">DESCRIPTION</th>
+                                <th scope="col">name</th>
+                                <th scope="col">price</th>
+                                <th scope="col">stocks</th>
+                                <th scope="col">size</th>
+                                <th scope="col">color</th>
+                                <th scope="col">category</th>
+                                <th scope="col">description</th>
                                 <th scope="col">Date Modified</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             <% for (var i = 0; i < db.length; i++) { %>
-                            <tr id="data-table">
+                            <tr id="data-table" onclick="edit_func(this)">
                                 <td> <%= db[i].name %> </td>
                                 <td> <%= db[i].price %> </td>
                                 <td> <%= db[i].stocks %> </td>
+                                <td> size</td>
+                                <td> color </td>
                                 <td> <%= db[i].category %> </td>
-                                <td> <%= db[i].description %> </td>
+                                <td><%= db[i].description %></td>
                                 <td>DATE</td>
                             </tr>
                             <% } %>
+
                         </tbody>
+
                     </table>
                 </div>
             </div>
+
 
         </div>
     </div>
 
     <script src="/public/js/admin-page.js"></script>
-
+    <script>
+        // FOR TABLE UI
+        $(document).ready(function () {
+            $('#display-table').DataTable({
+                "pagingType": "simple_numbers"
+            });
+            $('.dataTables_length').addClass('bs-select');
+        });
+    </script>
 
 </body>
 
