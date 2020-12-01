@@ -46,19 +46,3 @@ const openCont = ()=>{
 }
 openCont();
 
-// EDIT, DELETE ON TABLE
-const btn_edit = document.getElementById("btn-editID")
-const table_data = document.getElementById("display-table")
-
-
-// function edit_func(x) {
-//     // alert(table_data.rows[0].cells.item(1).innerHTML);
-//     // alert("Row index is: " + x.rowIndex);
-//     var _row = table_data.rows.length;
-//     for(let i = 0;i<= _row;i++){
-//         if(x.rowIndex == i){
-//             alert(table_data.rows[i].cells.item(1).innerHTML);
-//         }
-//     }
-// }
-

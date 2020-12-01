@@ -7,12 +7,17 @@ const mongoose = require('mongoose');
 const ejs = require('ejs');
 const cookieSession = require('cookie-session')
 const app = express();
+const passport = require('passport');
 let port = 3000;
-mongoose.connect('mongodb://localhost/project', {useNewUrlParser: true,useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost/project', 
+{
+  useNewUrlParser: true,
+  useUnifiedTopology: true 
+})
+const multer = require('multer');
 const products = require('./models/product-model');
 const orders = require('./models/order-model');
-const passport = require('passport');
-
+const crudrouter = require('./routes/crud')
 const { urlencoded } = require('body-parser');
 const { info } = require('console');
 const { model } = require('./models/product-model');
@@ -29,6 +34,7 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.urlencoded({extended:false}))
 app.use(bodyParser.json());
 app.use('/public',express.static(path.join(__dirname,'/public')));
+
 
 app.use(cookieSession({
     name: 'admin-session',
@@ -83,35 +89,35 @@ app.get('/google/callback',isNotLogin,passport.authenticate('google', { failureR
     }
   }
 );
-
 app.get('/logout',(req,res)=>{
   req.session=null
   req.logout();
   res.clearCookie('admin-session.sig', { path: '/' });
    res.redirect('/')
 })
-// IF HAV INTERNET
+// IF HAVE INTERNET
 
 app.get('/orders', isLogin,(req,res)=>{
   // const db = await products.find({})
   res.render('orders.ejs',{layout:false})
 })
-
+app.use('/show-product',crudrouter)
 app.get('/show-product',isLogin,async(req,res)=>{
   const db = await products.find({})
   res.render('showProduct.ejs',{db})
 })
+
+// Storage Engine for uploading Picture
+const storage = multer.diskStorage({
+    destination:'./public/Image/',
+ 
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }  
+});
+
+
+    
 app.listen(port,() => {
     console.log("Success to 3000")
 })
-
-// IF NO INTERNET
-// app.get('/orders',(req,res)=>{
-//   // const db = await products.find({})
-//   res.render('orders.ejs',{layout:false})
-// })
-
-// app.get('/show-product',async(req,res)=>{
-//   const db = await products.find({})
-//   res.render('showProduct.ejs',{db})
-// })

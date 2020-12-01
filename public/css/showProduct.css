@@ -4,3 +4,42 @@
      border-width: 1px;
      text-align:start;
 }
+.close span{
+     color:black;
+}
+.modal-dialog{
+     max-width: 50%; 
+}
+.modal-body{
+     overflow: auto;
+}
+#image{
+     text-overflow: ellipsis;
+}
+.form-group{
+     text-transform: capitalize;
+}
+.p-s{
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+}
+.form-group textarea{
+     resize: none;
+}
+.imgclass{
+     width: 100%;
+     padding: 10px;
+     background: rgba(0, 128, 0, 0.501);
+     border-radius: 10px;
+}
+.imgclass img{
+     width: 150px;
+   
+}
+button img{
+     width: 25px;
+     margin-left: 5px;
+}
+button:focus{
+     outline: none;
+}
