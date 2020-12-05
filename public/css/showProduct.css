@@ -34,11 +34,11 @@
 }
 .imgclass img{
      width: 150px;
-   
 }
 button img{
      width: 25px;
-     margin-left: 5px;
+     margin-right: 8px;
+     
 }
 button:focus{
      outline: none;

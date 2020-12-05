@@ -107,14 +107,14 @@ app.get('/show-product',isLogin,async(req,res)=>{
   res.render('showProduct.ejs',{db})
 })
 
-// Storage Engine for uploading Picture
-const storage = multer.diskStorage({
-    destination:'./public/Image/',
+// // Storage Engine for uploading Picture
+// const storage = multer.diskStorage({
+//     destination:'./public/Image/',
  
-    filename: function(req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    }  
-});
+//     filename: function(req, file, cb) {
+//         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+//     }  
+// });
 
 
     

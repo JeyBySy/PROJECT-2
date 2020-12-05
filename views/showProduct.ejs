@@ -89,152 +89,152 @@
         <!-- CONTENT -->
         <div class="main-container">
             <div class="product-content" id="product-contentID">
-                <!-- Show Product -->
+                <!--SECTION FOR MODALS -->
+                <section>
+                    <!-- MODAL FOR ADDING PRODUCT -->
+                    <div class="modal fade" tabindex="-1" role="dialog" id="addModal">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"><strong>Add</strong> Product</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="/show-product/add" method="POST" autocomplete="off"
+                                    enctype="multipart/form-data">
+                                    <!-- enctype="multipart/form-data" -->
+                                    <div class="modal-body">
+                                        <!-- FOR IMAGE -->
+                                        <div class="form-group">
+                                            <label for="image">Upload Image</label>
+                                            <br>
+                                            <input type="file" class="form-control-file" name="image" id="image">
+
+                                        </div>
+                                        <!-- FOR PRODUCT NAME -->
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="productName"
+                                                id="productNameID" placeholder="Product Name" data-toggle="tooltip"
+                                                data-placement="top" title="Product Name">
+                                        </div>
+                                        <!-- FOR PRICE AND STOCKS -->
+                                        <div class="form-group p-s">
+                                            <input type="number" min="0" class="form-control" name="price" id="priceID"
+                                                placeholder="Price" data-toggle="tooltip" data-placement="top"
+                                                title="Price">
+                                            <input type="number" min="0" class="form-control" name="stocks"
+                                                id="stocksID" placeholder="Stocks" data-toggle="tooltip"
+                                                data-placement="top" title="Stocks">
+                                        </div>
+                                        <!-- FOR SIZES AND COLOR -->
+                                        <div class="form-group p-s">
+                                            <select class="form-control" id="sizeID" name="size" data-toggle="tooltip"
+                                                data-placement="top" title="Size">
+                                                <option value="" selected disabled>Size</option>
+                                                <option value="N/A">N/A</option>
+                                                <option value="S">S</option>
+                                                <option value="M">M</option>
+                                                <option value="L">L</option>
+                                            </select>
+                                            <select class="form-control" id="colorID" name="color" data-toggle="tooltip"
+                                                data-placement="top" title="Color">
+                                                <option value="" selected disabled>Color</option>
+                                                <option value="N/A">N/A</option>
+                                                <option value="Red">Red</option>
+                                                <option value="Blue">Blue</option>
+                                                <option value="Green">Green</option>
+                                            </select>
+                                        </div>
+                                        <!-- FOR CATEGORY -->
+                                        <div class="form-group">
+                                            <select class="form-control" id="categoryID" name="category"
+                                                data-toggle="tooltip" data-placement="top" title="Category">
+                                                <option value="" selected disabled>Category</option>
+                                                <option value="Janitorial Supplies">Janitorial Supplies</option>
+                                                <option value="Cleaning Materials">Cleaning Materials</option>
+                                                <option value="Cleaning Equipment">Cleaning Equipment</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="5" id="descriptionID"
+                                                placeholder="Description" name="description"></textarea>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="/show-product">
+                                            <button type="submit" class="btn btn-primary">Add Product</button>
+                                        </a>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MODAL FOR EDITING PRODUCT -->
+                    <div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"><strong>Edit</strong> Product</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="/show-product/edit" method="POST" autocomplete="off"
+                                    enctype="multipart/form-data">
+
+                                    <div class="modal-body">
+                                        <div class="GFGclass" id="divGFG">
+                                            <!-- EMPTY FOR PRINTING THE DATA IN DATABASE -->
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+
+                                        <button type="submit" id="btn-editID" class="btn btn-warning">Save
+                                            Changes</button>
+
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MODAL FOR DELETING PRODUCT -->
+                    <div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"><strong>Delete</strong> Product</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="/show-product/delete" method="POST" autocomplete="off">
+                                    <!-- enctype="multipart/form-data" -->
+                                    <div class="modal-body">
+                                        <div class="GFGclass" id="delete-modalID">
+                                            <!-- EMPTY FOR PRINTING THE DATA IN DATABASE -->
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+
+                                        <button type="submit" id="btn-editID" class="btn btn-danger">Yes</button>
+
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END MODAL -->
+                </section>
                 <div class="btn-list">
                     <div class="btn-list-ARU">
-                        <!-- MODAL FOR ADDING PRODUCT -->
-                        <div class="modal fade" tabindex="-1" role="dialog" id="addModal">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title"><strong>Add</strong> Product</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <form action="/show-product/add" method="POST" autocomplete="off"
-                                        enctype="multipart/form-data">
-                                        <!-- enctype="multipart/form-data" -->
-                                        <div class="modal-body">
-                                            <!-- FOR IMAGE -->
-                                            <div class="form-group">
-                                                <label for="image">Upload Image</label>
-                                                <br>
-                                                <input type="file" class="form-control-file" name="image" id="image">
-
-                                            </div>
-                                            <!-- FOR PRODUCT NAME -->
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="productName"
-                                                    id="productNameID" placeholder="Product Name" data-toggle="tooltip"
-                                                    data-placement="top" title="Product Name">
-                                            </div>
-                                            <!-- FOR PRICE AND STOCKS -->
-                                            <div class="form-group p-s">
-                                                <input type="number" min="0" class="form-control" name="price"
-                                                    id="priceID" placeholder="Price" data-toggle="tooltip"
-                                                    data-placement="top" title="Price">
-                                                <input type="number" min="0" class="form-control" name="stocks"
-                                                    id="stocksID" placeholder="Stocks" data-toggle="tooltip"
-                                                    data-placement="top" title="Stocks">
-                                            </div>
-                                            <!-- FOR SIZES AND COLOR -->
-                                            <div class="form-group p-s">
-                                                <select class="form-control" id="sizeID" name="size"
-                                                    data-toggle="tooltip" data-placement="top" title="Size">
-                                                    <option value="" selected disabled>Size</option>
-                                                    <option value="N/A">N/A</option>
-                                                    <option value="S">S</option>
-                                                    <option value="M">M</option>
-                                                    <option value="L">L</option>
-                                                </select>
-                                                <select class="form-control" id="colorID" name="color"
-                                                    data-toggle="tooltip" data-placement="top" title="Color">
-                                                    <option value="" selected disabled>Color</option>
-                                                    <option value="N/A">N/A</option>
-                                                    <option value="Red">Red</option>
-                                                    <option value="Blue">Blue</option>
-                                                    <option value="Green">Green</option>
-                                                </select>
-                                            </div>
-                                            <!-- FOR CATEGORY -->
-                                            <div class="form-group">
-                                                <select class="form-control" id="categoryID" name="category"
-                                                    data-toggle="tooltip" data-placement="top" title="Category">
-                                                    <option value="" selected disabled>Category</option>
-                                                    <option value="Janitorial Supplies">Janitorial Supplies</option>
-                                                    <option value="Cleaning Materials">Cleaning Materials</option>
-                                                    <option value="Cleaning Equipment">Cleaning Equipment</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <textarea class="form-control" rows="5" id="descriptionID"
-                                                    placeholder="Description" name="description"></textarea>
-                                            </div>
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a href="/show-product">
-                                                <button type="submit" class="btn btn-primary">Add Product</button>
-                                            </a>
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- MODAL FOR EDITING PRODUCT -->
-                        <div class="modal fade" tabindex="-1" role="dialog" id="editModal">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title"><strong>Edit</strong> Product</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <form action="/show-product/edit" method="POST" autocomplete="off"
-                                        enctype="multipart/form-data">
-
-                                        <div class="modal-body">
-                                            <div class="GFGclass" id="divGFG">
-                                                <!-- EMPTY FOR PRINTING THE DATA IN DATABASE -->
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-
-                                            <button type="submit" id="btn-editID" class="btn btn-warning">Save
-                                                Changes</button>
-
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- MODAL FOR DELETING PRODUCT -->
-                        <div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title"><strong>Delete</strong> Product</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <form action="/show-product/delete" method="POST" autocomplete="off">
-                                        <!-- enctype="multipart/form-data" -->
-                                        <div class="modal-body">
-                                            <div class="GFGclass" id="delete-modalID">
-                                                <!-- EMPTY FOR PRINTING THE DATA IN DATABASE -->
-
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-
-                                            <button type="submit" id="btn-editID" class="btn btn-danger">Yes</button>
-
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">No</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END MODAL -->
-
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">
                             Add Product
                         </button>
@@ -249,9 +249,10 @@
                         </button>
                     </div>
                 </div>
-                <hr>
+
+                <!-- Show Product -->
                 <div class="list-items">
-                    <table class="table table-sm table-bordered  mb-2 table-striped" id="display-table">
+                    <table class="table table-sm table-bordered table-striped" id="display-table">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
@@ -314,13 +315,15 @@
         // FOR TABLE UI
         $(document).ready(function () {
             $('#display-table').DataTable({
-                "paging": false
+                "paging": false,
+                "scrollY": "60vh",
+                "scrollCollapse": true,
             });
             $('.dataTables_length').addClass('bs-select');
 
         });
 
-
+        // MODALS
         $(function () {
             // ON SELECTING ROW 
             $(".action").click(function () {
