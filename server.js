@@ -9,11 +9,12 @@ const cookieSession = require('cookie-session')
 const app = express();
 const passport = require('passport');
 let port = 3000;
-mongoose.connect('mongodb://localhost/project', 
+mongoose.connect('mongodb+srv://admin123:zRIkqj9Pk8Uz2A5I@cluster0.p1ih6.mongodb.net/project', 
 {
   useNewUrlParser: true,
   useUnifiedTopology: true 
 })
+// mongodb://localhost/project
 const multer = require('multer');
 const products = require('./models/product-model');
 const orders = require('./models/order-model');

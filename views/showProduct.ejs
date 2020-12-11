@@ -127,7 +127,7 @@
                                                 id="stocksID" placeholder="Stocks" data-toggle="tooltip"
                                                 data-placement="top" title="Stocks">
                                         </div>
-                                        <!-- FOR SIZES AND COLOR -->
+                                        <!-- FOR SIZES AND COLOR
                                         <div class="form-group p-s">
                                             <select class="form-control" id="sizeID" name="size" data-toggle="tooltip"
                                                 data-placement="top" title="Size">
@@ -145,7 +145,7 @@
                                                 <option value="Blue">Blue</option>
                                                 <option value="Green">Green</option>
                                             </select>
-                                        </div>
+                                        </div> -->
                                         <!-- FOR CATEGORY -->
                                         <div class="form-group">
                                             <select class="form-control" id="categoryID" name="category"
@@ -260,8 +260,6 @@
                                 <th scope="col">product name</th>
                                 <th scope="col">price</th>
                                 <th scope="col">stocks</th>
-                                <th scope="col">size</th>
-                                <th scope="col">color</th>
                                 <th scope="col">category</th>
                                 <th scope="col">description</th>
                                 <th scope="col">Date Modified</th>
@@ -279,8 +277,6 @@
                                 <td class="tb-name"> <%= db[i].name %> </td>
                                 <td class="tb-price"> <%= db[i].price %> </td>
                                 <td class="tb-stocks"> <%= db[i].stocks %> </td>
-                                <td class="tb-size"> <%= db[i].size %></td>
-                                <td class="tb-color"> <%= db[i].color %> </td>
                                 <td class="tb-category"> <%= db[i].category %> </td>
                                 <td class="tb-description"><%= db[i].description %></td>
                                 <td><%= db[i].date  %> </td>
@@ -338,10 +334,10 @@
                     $(this).parents("tr").find(".tb-price").text().trim();
                 var stocks =
                     $(this).parents("tr").find(".tb-stocks").text().trim();
-                var size =
-                    $(this).parents("tr").find(".tb-size").text().trim();
-                var color =
-                    $(this).parents("tr").find(".tb-color").text().trim();
+                // var size =
+                //     $(this).parents("tr").find(".tb-size").text().trim();
+                // var color =
+                //     $(this).parents("tr").find(".tb-color").text().trim();
                 var category =
                     $(this).parents("tr").find(".tb-category").text().trim();
                 var description =
@@ -387,25 +383,25 @@
                             placeholder="${stocks}"
                             data-toggle="tooltip" data-placement="top" title="Stocks" value="0">
                     </div>`
-                p +=
-                    ` <div class="form-group p-s">
-                        <select class="form-control" id="sizeID" name="size" data-toggle="tooltip" data-placement="top"
-                            title="Size">
-                            <option value="${size}" selected="selected">${size}</option>
-                            <option value="N/A">N/A</option>
-                            <option value="S">S</option>
-                            <option value="M">M</option>
-                            <option value="L">L</option>
-                        </select>
-                        <select class="form-control" id="colorID" name="color" data-toggle="tooltip"
-                            data-placement="top" title="Color">
-                            <option value="${color}" selected="selected">${color}</option>
-                            <option value="N/A">N/A</option>
-                            <option value="Red">Red</option>
-                            <option value="Blue">Blue</option>
-                            <option value="Green">Green</option>
-                        </select>
-                    </div>`;
+                // p +=
+                //     ` <div class="form-group p-s">
+                //         <select class="form-control" id="sizeID" name="size" data-toggle="tooltip" data-placement="top"
+                //             title="Size">
+                //             <option value="${size}" selected="selected">${size}</option>
+                //             <option value="N/A">N/A</option>
+                //             <option value="S">S</option>
+                //             <option value="M">M</option>
+                //             <option value="L">L</option>
+                //         </select>
+                //         <select class="form-control" id="colorID" name="color" data-toggle="tooltip"
+                //             data-placement="top" title="Color">
+                //             <option value="${color}" selected="selected">${color}</option>
+                //             <option value="N/A">N/A</option>
+                //             <option value="Red">Red</option>
+                //             <option value="Blue">Blue</option>
+                //             <option value="Green">Green</option>
+                //         </select>
+                //     </div>`;
                 p +=
                     ` <div class="form-group">
                         <select class="form-control" id="categoryID" name="category" data-toggle="tooltip"
