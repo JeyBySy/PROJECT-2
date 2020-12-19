@@ -19,199 +19,220 @@
     <link rel="stylesheet" href="public/css/products.css">
     <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
     <!-- <script type="text/javascript" src="public/js/bootstrap.bundle.js"></script> -->
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Open+Sans" rel="stylesheet">
     </body>
 </head>
 
 <body>
-    <div class="header">
-        <div class="logos">
-            <div class="logos-word">
-                <h1>BEY<span>LANDS</span><sub>ADMIN</sub></h1>
+    <%if(email == "companybeylands@gmail.com"){%>
+    <div class="logout-popup" id="logout-popupID">
+        <div class="blocker" onclick="hidePopup()"></div>
+        <div class="content">
+            <img src="<%= picture%>" alt="" class="responsive-img">
+            <br>
+            <%= userName%>
+            <p class="text-muted">
+                <%= email%>
+            </p>
+            <strong>ADMIN</strong>
+            <hr>
+            <a href="/logout">
+                <div class="btn btn-slight logout-popup-btn">
+                    LOGOUT
+                </div>
+            </a>
+        </div>
+
+    </div>
+    <%}else{%>
+    <div class="logout-popup" id="logout-popupID">
+        <img src="<%= picture%>" alt="" class="responsive-img">
+        <br>
+        <%= userName%>
+        <p class="text-muted">
+            <%= email%>
+        </p>
+        <strong>USER</strong>
+        <hr>
+        <a href="/logout">
+            <div class="btn btn-slight logout-popup-btn">
+                LOGOUT
+            </div>
+        </a>
+    </div>
+    <%}%>  
+    <!-- MODALS -->
+     <%  orders.forEach(function (item){ %>
+    <div class="modal fade" tabindex="-1" role="dialog" id="showOrder">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><strong>Show</strong> Item/s</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="show_list">
+                        <% for (var i = 0; i < item.length; i++) { %>
+                        <%= item[i].cart.items %>
+                        <%}%>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <a href="/show-product">
+                        <button type="submit" class="btn btn-primary">Add Product</button>
+                    </a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
             </div>
         </div>
     </div>
-    <div class="wrapper">
-        <div class="side-container">
-            <!-- DASHBOARD -->
-            <a href="/dashboard">
-                <div class="btn-dash" id="dashID">
-                    dashboard
-                </div>
-            </a>
-            <hr>
-            <!-- ORDERS -->
-            <div class="btn-orders" id="ordersID">
-                Orders
-                <hr>
-            </div>
-            <!-- PRODUCT -->
-            <div class="btn-product" id="productID">
-                products
-            </div>
+    <%})%>
+                        <div class="header">
+                            <div class="logos">
+                                <div class="logos-word">
+                                    <h1>BEY<span>LANDS</span><sub>ADMIN</sub></h1>
+                                </div>
+                            </div>
+                            <div class="popup" onclick="showPopup()">
+                                <img src="<%= picture %>" alt="" class="email-picture" id="email-pictureID">
+                            </div>
 
-            <hr>
-            <div class="btn-product-overlay" id="btn-product-overlayID">
-                <a href="/show-product">
-                    <div class="btn-product-overlay-1" id="show-productID">
-                        <div class="text">
-                            Show Products
                         </div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="btn-product-overlay-2" id="show-manageID">
-                        <div class="text">
-                            Manage Attributes
-                        </div>
-                    </div>
-                </a>
-                <hr style="margin-left: -15px;">
-
-            </div>
-            <a href="/logout">
-                <div class="btn-logout" id="logoutID">
-                    logout
-                </div>
-            </a>
-        </div>
-
-        <div class="main-container">
-            <div class="order-content" id="order-contentID">
-                <div class="order-content-btn">
-                    ORDERS
-                </div>
-                <div class="order-content-info">
-                    <div class="card bg-success text-white">
-                        <div class="card-body">
-                            <div class="card-body-customerInfo">
-                                <div class="text">
-                                    Customer Info
+                        <div class="wrapper">
+                            <div class="side-container">
+                                <!-- DASHBOARD -->
+                                <a href="/dashboard" class="active">
+                                    <div class="btn-dash" id="dashID">
+                                        dashboard
+                                    </div>
+                                </a>
+                                <!-- ORDERS -->
+                                <div class="btn-orders" id="ordersID" style="background: #99ffc2; border-radius: 5px;">
+                                    Orders
                                 </div>
-                                <hr>
-                                Name:
-                                <br>
-                                Email:
-                                <br>
-                                Mobile Number:
-                            </div>
-                            <div class="card-body-totalItems">
-                                <div class="text">
-                                    Total Item/s
+                                <!-- PRODUCT -->
+                                <div class="btn-product" id="productID">
+                                    products
+                                </div>
+                                <div class="btn-product-overlay" id="btn-product-overlayID">
+                                    <hr style="margin-left: -15px;">
+                                    <a href="/show-product">
+                                        <div class="btn-product-overlay-1" id="show-productID">
+                                            <div class="text">
+                                                Show Products
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#">
+                                        <div class="btn-product-overlay-2" id="show-manageID">
+                                            <div class="text">
+                                                Manage Attributes
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <hr style="margin-left: -15px;">
+
                                 </div>
 
-                                <hr>
-                                1
                             </div>
-                            <div class="card-body-action">
-                                <div class="text">
-                                    Action
+
+                            <div class="main-container">
+                                <div class="order-content-btn">
+                                    <button type="button" class="btn btn-primary orderBTN">
+                                        <!-- data-toggle="modal" data-target="#addModal"-->
+                                        ORDERS
+                                    </button>
                                 </div>
+                                <div class="order-content" id="order-contentID">
+                                    <%  if(orders.length > 0){ %>
+                                    <%  orders.forEach(function (items){ %>
+                                    <div class="order-content-info">
+                                        <div class="card bg-light mb-0">
+                                            <div class="card-body">
+                                                <div class="card-body-customerInfo">
+                                                    <div class="text">
+                                                        Customer Info
+                                                    </div>
+                                                    <hr>
+                                                    <section class="section-cust-info">
+                                                        <div class="p-s">
+                                                            <label for="name">
+                                                                Name:
+                                                            </label>
 
-                                <hr>
-                                Show | Ready
+                                                            <span class="cust_info"><%= items.name %></span>
+                                                        </div>
+                                                        <div class="p-s">
+                                                            <label for="email">
+                                                                Email:
+                                                            </label>
+                                                            <span class="cust_info"
+                                                                style="text-transform: none;"><%= items.email %></span>
+                                                        </div>
+                                                        <div class="p-s">
+                                                            <label for="number">
+                                                                Mobile Number:
+                                                            </label>
+                                                            <span class="cust_info"><%= items.contact %></spa>
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                                <div class="card-body-totalItems">
+                                                    <div class="text">
+                                                        Total Item/s
+                                                    </div>
+                                                    <hr>
+                                                    <div class="cust_total_item">
+                                                        <div class="p.s">
+                                                            <label for="name">
+                                                                <span class="cust_info">
+                                                                    <!-- <%#= items.cart['5fcdad28db5c902e86eb2937'].name%> -->
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card bg-success text-white">
-                        <div class="card-body">
-                            <div class="card-body-customerInfo">
-                                <div class="text">
-                                    Customer Info
-                                </div>
-                                <hr>
-                                Name:
-                                <br>
-                                Email:
-                                <br>
-                                Mobile Number:
-                            </div>
-                            <div class="card-body-totalItems">
-                                <div class="text">
-                                    Total Item/s
-                                </div>
+                                                                </span>
+                                                            </label>
+                                                            <span class="cust_info" style="text-transform:
+                                                                 none;"></span>
+                                                        </div>
+                                                        <%= items.cart.totalQty%>
 
-                                <hr>
-                                1
-                            </div>
-                            <div class="card-body-action">
-                                <div class="text">
-                                    Action
-                                </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body-action">
+                                                    <div class="text">
+                                                        Action
+                                                    </div>
+                                                    <hr>
+                                                    <div class="cust_action">
+                                                        <form action="/awit/<%=items._id%>" method="POST">
+                                                            <button type="submit" class="btn btn-info"
+                                                                data-toggle="modal" data-target="#showOrder">
+                                                                Show
 
-                                <hr>
-                                Show | Ready
+                                                            </button>
+                                                            |
+                                                            <button type=" button" class="btn btn-warning"
+                                                                data-toggle="modal" data-target="#showOrder">
+                                                                Ready
+                                                            </button>
+                                                        </form>
+                                                    </div>
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card bg-success text-white">
-                        <div class="card-body">
-                            <div class="card-body-customerInfo">
-                                <div class="text">
-                                    Customer Info
-                                </div>
-                                <hr>
-                                Name:
-                                <br>
-                                Email:
-                                <br>
-                                Mobile Number:
-                            </div>
-                            <div class="card-body-totalItems">
-                                <div class="text">
-                                    Total Item/s
-                                </div>
-
-                                <hr>
-                                1
-                            </div>
-                            <div class="card-body-action">
-                                <div class="text">
-                                    Action
-                                </div>
-
-                                <hr>
-                                Show | Ready
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card bg-success text-white">
-                        <div class="card-body">
-                            <div class="card-body-customerInfo">
-                                <div class="text">
-                                    Customer Info
-                                </div>
-                                <hr>
-                                Name:
-                                <br>
-                                Email:
-                                <br>
-                                Mobile Number:
-                            </div>
-                            <div class="card-body-totalItems">
-                                <div class="text">
-                                    Total Item/s
-                                </div>
-
-                                <hr>
-                                1
-                            </div>
-                            <div class="card-body-action">
-                                <div class="text">
-                                    Action
-                                </div>
-
-                                <hr>
-                                Show | Ready
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <%})%>
+                                    <%}else{%>
+                                    <div class="alert alert-danger" role="alert"
+                                        style="width: 90%; margin:2rem auto auto auto; text-align: center;">
+                                        <strong> NO ORDERS YET</strong>
+                                    </div>
+                                    <%}%>
             </div>
         </div>
     </div>

@@ -1,12 +1,24 @@
-.btn-product,
+.btn-product{
+    margin: 0.4rem;
+    text-align: center;
+    padding: 0.5rem;
+}
+
 .btn-product:hover {
     cursor: pointer;
+    background: #99ffc2;
+    border-radius: 5px;
+    padding: 0.5rem;
+    transition: all 0.9s;
 }
+
 .btn-product-overlay {
     width: 100%;
+    margin-top: 0%;
     display: none;
-    border-width: 1px;
-    text-align: start;
+    border-width: 4px;
+    text-align: center;
+   
 }
 body{
     overflow-y: hidden;
@@ -16,11 +28,18 @@ body{
     padding: 0;
 }
 
-.btn-product-overlay-1:hover,
-.btn-product-overlay-2:hover {
+.btn-product-overlay-1,
+.btn-product-overlay-2 {
     cursor: pointer;
-    background: #eeeeee;
+    margin: 1rem;
+    text-align: center;
+
 }
+.btn-product-overlay-2:hover,
+.btn-product-overlay-1:hover{
+background: white;
+}
+
 .product-content {
     width: 100%;
     position: absolute;
@@ -50,6 +69,7 @@ body{
 } */
 .product-content button {
     width: auto;
+    
 }
 
 .list-items {
@@ -59,7 +79,7 @@ body{
     margin: 1rem;
     font-size: 14px;
     background: rgb(255, 255, 255);  
-    margin-top: 60px;
+    margin-top:6%;
 }
 
 .list-items thead th {

@@ -43,3 +43,6 @@ button img{
 button:focus{
      outline: none;
 }
+.addProduct {
+     margin: 0.6rem;
+}

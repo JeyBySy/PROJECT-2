@@ -19,6 +19,7 @@ sub {
     font-size: 19px;
     letter-spacing: 3px;
     margin-left: 5px;
+    
 }
 
 span {
@@ -35,51 +36,157 @@ span {
 .header {
     width: 100%;
     height: auto;
-    background: linear-gradient(180deg, #282828, #424242);
-    /* background: white; */
+    background: #01976F;
     position: fixed;
     z-index: 2;
     top: 0;
     border-bottom-style: outset;
+    display: flex;
+}
+.header img{
+    border-radius: 5rem;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 1rem;
+    margin: 1rem;
 }
 .wrapper{
     margin-top: 83px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    /* display: grid;
+    grid-template-columns: 30% 70% */
 }
 .side-container{
     position: fixed;
     width: 15%;
-    height: 90%;
-    background:#39ca74;
+    height: 100%;
+     background:#01976F;
     z-index: 0;
     text-transform: capitalize;
-    font-size: 19px;
+    font-size: 20px;
+    font-family: 'Poppins',
+    sans-serif;
+    padding: 0;
     /* letter-spacing: 2px; */
 }
 .main-container{
     position: absolute;
     right: 0;
     width: 85%;
-    height: fit-content;
-    /* overflow-y: auto; */
-    background:white;
+    overflow-y: auto;
+    height: 100%;
+    background:#fafafa;
     /* background:#39ca74; */
+     padding: 0;
 }
-.btn-dash,
+.btn-dash {
+    margin: 0.4rem;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 5px;
+    background: #54d57f;
+}
+
 .btn-dash:hover {
-    cursor: pointer;
+  cursor: pointer;
+  background: #54d57f;
+  border-radius: 5px;
+  padding: 0.5rem;
+  transition: all 0.9s;
 }
+
 .dash-content {
     width: 100%;
     position: absolute;
     top: 0;
     bottom: 0;
-    /* background: white; */
+    /* background: rgb(153, 45, 45); */
     display: inline;
 }
 a:hover,
 a {
     text-decoration: none;
     color: black;
+}
+
+.dash-content {
+    padding-top: 0.5rem;
+    /* margin-top: 5%; */
+    margin-bottom: 9rem;
+    height: fit-content;
+}
+.card{
+    margin: 0.6rem;
+    height: 200px;
+   
+}
+.card-group{
+    height: 200px;
+    
+}
+.card-body_dash{
+   text-align: center;
+   position: absolute;
+   bottom: 0;
+   font-size:18px;
+   margin-bottom: 1rem;
+   width: 100%;
+}
+.text_dash{
+    text-align: center;
+    font-size: 30px; 
+    width: 100%;
+    margin: auto;
+
+     font-family: 'Gill Sans',
+     'Gill Sans MT',
+     Calibri,
+     'Trebuchet MS',
+     sans-serif;
+}
+.logout-popup {
+    display: none;
+}
+
+.logout-popup.open {
+    display: inline;
+}
+.blocker{
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: ' ';
+    background: rgba(255, 255, 255, 0);
+}
+.logout-popup .content{
+    position: fixed;
+    width: 25%;
+    height: fit-content;
+    background: rgb(255, 255, 255);
+    right: 1rem;
+    top: 13%;
+    z-index: 3;
+    box-shadow: rgba(0, 0, 0, 0.344) 0px 0px 3px 1px;
+    border-radius: 5px;
+    text-align: center;
+}
+.email-picture:hover {
+    cursor: pointer;
+}
+.logout-popup img{
+     border-radius: 5rem;
+     width: 60px;
+     height: 60px;
+     margin: 1rem;
+     right: auto;
+    position: relative;
+}
+.logout-popup-btn{
+    margin: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.344) 0px 0px 1px 0.5px; 
 }

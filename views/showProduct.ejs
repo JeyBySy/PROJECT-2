@@ -26,18 +26,58 @@
     <link rel="stylesheet" href="public/css/products.css">
     <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
     <!-- <script type="text/javascript" src="public/js/bootstrap.bundle.js"></script> -->
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Open+Sans" rel="stylesheet">
     </body>
 </head>
 
 <body>
+    <%if(email == "companybeylands@gmail.com"){%>
+    <div class="logout-popup" id="logout-popupID">
+        <div class="blocker" onclick="hidePopup()"></div>
+        <div class="content">
+            <img src="<%= picture%>" alt="" class="responsive-img">
+            <br>
+            <%= userName%>
+            <p class="text-muted">
+                <%= email%>
+            </p>
+            <strong>ADMIN</strong>
+            <hr>
+            <a href="/logout">
+                <div class="btn btn-slight logout-popup-btn">
+                    LOGOUT
+                </div>
+            </a>
+        </div>
+
+    </div>
+    <%}else{%>
+    <div class="logout-popup" id="logout-popupID">
+        <img src="<%= picture%>" alt="" class="responsive-img">
+        <br>
+        <%= userName%>
+        <p class="text-muted">
+            <%= email%>
+        </p>
+        <strong>USER</strong>
+        <hr>
+        <a href="/logout">
+            <div class="btn btn-slight logout-popup-btn">
+                LOGOUT
+            </div>
+        </a>
+    </div>
+    <%}%>  
     <div class="header">
         <div class="logos">
             <div class="logos-word">
                 <h1>BEY<span>LANDS</span><sub>ADMIN</sub></h1>
             </div>
         </div>
+        <div class="popup" onclick="showPopup()">
+            <img src="<%= picture %>" alt="" class="email-picture" id="email-pictureID">
+    </div>
     </div>
     <div class="wrapper">
         <div class="side-container">
@@ -47,21 +87,22 @@
                     dashboard
                 </div>
             </a>
-            <hr>
+
             <!-- ORDERS -->
             <a href="/orders">
                 <div class="btn-orders" id="ordersID">
                     Orders
                 </div>
             </a>
-            <hr>
+
             <!-- PRODUCT -->
-            <div class="btn-product" id="productID">
+            <div class="btn-product" id="productID" style="background: #99ffc2; border-radius: 5px;">
                 products
             </div>
-            <hr>
+
             <div class=" btn-product-overlays" id="btn-product-overlayID">
                 <!-- OVERLAY SHOW PRODUCT -->
+                <hr style="margin-left: -15px;">
                 <a href="/show-product">
                     <div class="btn-product-overlay-1" id="show-productID">
                         <div class="text">
@@ -80,11 +121,6 @@
                 <hr style="margin-left: -15px;">
             </div>
 
-            <a href="/logout">
-                <div class="btn-logout" id="logoutID">
-                    logout
-                </div>
-            </a>
         </div>
         <!-- CONTENT -->
         <div class="main-container">
@@ -235,7 +271,8 @@
                 </section>
                 <div class="btn-list">
                     <div class="btn-list-ARU">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">
+                        <button type="button" class="btn btn-primary addProduct" data-toggle="modal"
+                            data-target="#addModal">
                             Add Product
                         </button>
                     </div>
