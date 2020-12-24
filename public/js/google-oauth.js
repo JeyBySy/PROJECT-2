@@ -12,7 +12,7 @@ passport.deserializeUser(function(user, done) {
 passport.use(new GoogleStrategy({
     clientID: '220011432454-t5e6gg8cador08fi5oehioojdqm7fshc.apps.googleusercontent.com',
     clientSecret: 'AdII2GLWIFQv-VkF--Gq_sLo', 
-    callbackURL: "http://localhost:3000/google/callback" || "https://beylands-admin.herokuapp.com/google/callback"
+    callbackURL:"https://beylands-admin.herokuapp.com/google/callback" //"http://localhost:3000/google/callback" 
   },
   function(accessToken, refreshToken, profile, done) {
         return done(null, profile);
