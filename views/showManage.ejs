@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Beylands Admin</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -12,6 +11,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
     </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/css/showProduct.css">
     <link rel="stylesheet" href="public/css/index.css">
@@ -19,18 +26,58 @@
     <link rel="stylesheet" href="public/css/products.css">
     <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
     <!-- <script type="text/javascript" src="public/js/bootstrap.bundle.js"></script> -->
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Open+Sans" rel="stylesheet">
     </body>
 </head>
 
 <body>
+    <%if(email == "companybeylands@gmail.com"){%>
+    <div class="logout-popup" id="logout-popupID">
+        <div class="blocker" onclick="hidePopup()"></div>
+        <div class="content">
+            <img src="<%= picture%>" alt="" class="responsive-img">
+            <br>
+            <%= userName%>
+            <p class="text-muted">
+                <%= email%>
+            </p>
+            <strong>ADMIN</strong>
+            <hr>
+            <a href="/logout">
+                <div class="btn btn-slight logout-popup-btn">
+                    LOGOUT
+                </div>
+            </a>
+        </div>
+
+    </div>
+    <%}else{%>
+    <div class="logout-popup" id="logout-popupID">
+        <img src="<%= picture%>" alt="" class="responsive-img">
+        <br>
+        <%= userName%>
+        <p class="text-muted">
+            <%= email%>
+        </p>
+        <strong>USER</strong>
+        <hr>
+        <a href="/logout">
+            <div class="btn btn-slight logout-popup-btn">
+                LOGOUT
+            </div>
+        </a>
+    </div>
+    <%}%>  
     <div class="header">
         <div class="logos">
             <div class="logos-word">
                 <h1>BEY<span>LANDS</span><sub>ADMIN</sub></h1>
             </div>
         </div>
+        <div class="popup" onclick="showPopup()">
+            <img src="<%= picture %>" alt="" class="email-picture" id="email-pictureID">
+    </div>
     </div>
     <div class="wrapper">
         <div class="side-container">
@@ -40,21 +87,22 @@
                     dashboard
                 </div>
             </a>
-            <hr>
+
             <!-- ORDERS -->
             <a href="/orders">
                 <div class="btn-orders" id="ordersID">
                     Orders
                 </div>
             </a>
-            <hr>
+
             <!-- PRODUCT -->
-            <div class="btn-product" id="productID">
+            <div class="btn-product" id="productID" style="background: #99ffc2; border-radius: 5px; color: #01976F;">
                 products
             </div>
-            <hr>
+
             <div class=" btn-product-overlays" id="btn-product-overlayID">
                 <!-- OVERLAY SHOW PRODUCT -->
+
                 <a href="/show-product">
                     <div class="btn-product-overlay-1" id="show-productID">
                         <div class="text">
@@ -63,88 +111,238 @@
                     </div>
                 </a>
                 <!-- OVERLAY MANAGE PRODUCT -->
-                <a href="#">
+                <a href="">
                     <div class="btn-product-overlay-2" id="show-manageID">
                         <div class="text">
-                            Manage Products
+                            Manage Attributes
                         </div>
                     </div>
                 </a>
                 <hr style="margin-left: -15px;">
             </div>
 
-            <a href="/logout">
-                <div class="btn-logout" id="logoutID">
-                    logout
-                </div>
-            </a>
         </div>
         <!-- CONTENT -->
         <div class="main-container">
             <div class="product-content" id="product-contentID">
-                <div class="btn-list">
-                    <div class="dropdown">
-                        <div class="btn-group">
-                            <a class="btns btn dropdown-toggle" data-toggle="dropdown">
-                                ALL <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">ALL</a></li>
-                                <div class="dropdown-divider"></div>
-                                <li><a href="#">Janitorial Supplies</a></li>
-                                <div class="dropdown-divider"></div>
-                                <li><a href="#">Commercial Products</a></li>
-                                <div class="dropdown-divider"></div>
-                                <li><a href="#">Cleaning Chemicals</a></li>
-                                <div class="dropdown-divider"></div>
-                                <li><a href="#">Cleaning Equipments</a></li>
-                                <div class="dropdown-divider"></div>
-                                <li><a href="#">Organic Products</a></li>
-                            </ul>
+                <!--SECTION FOR MODALS -->
+                <section>
+                    <!-- MODAL FOR ADDING PRODUCT -->
+                    <div class="modal fade" tabindex="-1" role="dialog" id="addModal">
+                        <div class="modal-dialog" role="document" style="width:400px;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"><strong>Add</strong> Category</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="/manage-attributes/add-category" method="POST" autocomplete="off">
+                                    <!-- enctype="multipart/form-data" -->
+                                    <div class="modal-body">
+
+                                        <!-- FOR PRODUCT NAME -->
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="category" id="productNameID"
+                                                placeholder="New Category" data-toggle="tooltip" data-placement="top"
+                                                title="Product Name">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="/manage-attributes">
+                                            <button type="submit" class="btn btn-primary">Add Category</button>
+                                        </a>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <div class="btn-list-ARU">
-                        <button type="button" class="btn btn-primary">ADD</button>
-                        <button type="button" class="btn btn-warning">UPDATE</button>
-                        <button type="button" class="btn btn-danger">REMOVE</button>
+                    <!-- MODAL FOR EDITING PRODUCT -->
+                    <div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+                        <div class="modal-dialog" role="document" style="width:400px;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"><strong>Edit</strong> Product</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action='/manage-attributes/edit-category' method="POST" autocomplete="off">
+
+                                    <div class="modal-body">
+                                        <div class="GFGclass" id="divGFG">
+                                            <!-- EMPTY FOR PRINTING THE DATA IN DATABASE -->
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+
+                                        <button type="submit" id="btn-editID" class="btn btn-warning">Save
+                                            Changes</button>
+
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    PRINT |
-                    EXPORT
+                    <!-- MODAL FOR DELETING PRODUCT -->
+                    <div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
+                        <div class="modal-dialog" role="document" style="width:400px;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"><strong>Delete</strong> Product</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="/manage-attributes/delete-category" method="POST" autocomplete="off">
+                                    <!-- enctype="multipart/form-data" -->
+                                    <div class="modal-body">
+                                        <div class="GFGclass" id="delete-modalID">
+                                            <!-- EMPTY FOR PRINTING THE DATA IN DATABASE -->
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+
+                                        <button type="submit" id="btn-editID" class="btn btn-danger">Yes</button>
+
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END MODAL -->
+                </section>
+                <div class="btn-list">
+                    <div class="btn-list-ARU">
+                        <button type="button" class="btn btn-primary addProduct" data-toggle="modal"
+                            data-target="#addModal">
+                            Add Category
+                        </button>
+                    </div>
+                    <div class="print-export" style="text-align:end;">
+                    </div>
                 </div>
+
+                <!-- Show Product -->
                 <div class="list-items">
-                    <table class="table table-sm" id="display-table">
+                    <table class="table table-sm table-bordered table-striped" id="display-table">
                         <thead>
                             <tr>
-                                <th scope="col">NAME</th>
-                                <th scope="col">PRICE</th>
-                                <th scope="col">STOCKS</th>
+                                <th scope="col">ID</th>
                                 <th scope="col">CATEGORY</th>
-                                <th scope="col">DESCRIPTION</th>
-                                <th scope="col">Date Modified</th>
+                                <th scope="col">ACTION</th>
+
                             </tr>
                         </thead>
                         <tbody>
+
                             <% for (var i = 0; i < db.length; i++) { %>
                             <tr id="data-table">
-                                <td> <%= db[i].name %> </td>
-                                <td> <%= db[i].price %> </td>
-                                <td> <%= db[i].stocks %> </td>
-                                <td> <%= db[i].category %> </td>
-                                <td> <%= db[i].description %> </td>
-                                <td>DATE</td>
+                                <td class="tb-id" style='text-transform: capitalize; font-size: 15px;'>
+                                    <%= db[i].id %>
+                                </td>
+                                <td class="tb-category" style='text-transform: capitalize; font-size: 15px;'>
+                                    <%= db[i].category %>
+                                </td>
+                                <td>
+                                    <button class="action" data-toggle="modal" data-target="#editModal"
+                                        style="background: transparent; border: none;">
+                                        <img src="/public/Image/editIcon.png" alt="EDIT" srcset="">
+                                    </button>
+                                    <button class="action" data-toggle="modal" data-target="#deleteModal"
+                                        style="background: transparent; border: none;">
+                                        <img src="/public/Image/deleteIcon.png" alt="REMOVE" srcset="">
+                                    </button>
+                                </td>
                             </tr>
                             <% } %>
+
+
                         </tbody>
+
                     </table>
                 </div>
             </div>
+
 
         </div>
     </div>
 
     <script src="/public/js/admin-page.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#display-table').DataTable({
+                "paging": false,
+                "scrollY": "60vh",
+                "scrollCollapse": true,
+            });
+            $('.dataTables_length').addClass('bs-select');
+
+        });
+
+        $(function () {
+            // ON SELECTING ROW
+            $(".action").click(function () {
+                //FINDING ELEMENTS OF ROWS AND STORING THEM IN VARIABLES
+                var id =
+                    $(this).parents("tr").find(".tb-id").text().trim();
+                var category =
+                    $(this).parents("tr").find(".tb-category").text().trim();
+                var p = "";
+                var d = "";
+                // CREATING DATA TO SHOW ON MODEL
+
+                p +=
+                    `<div class="form-group">
+                        <label for="status">
+                        <strong>ID</strong>
+                        </label>
+                        <input type="text" class="form-control" name="id" id="idID" placeholder="ID" value="${id}"
+                            style="cursor: default;pointer-events: none;}">
+                    </div>`
+
+                p +=
+                    `<div class="form-group">
+                            <label for="status">
+                            <strong>Category</strong>
+                            </label>
+                            <input type="text" class="form-control" name="category" id="categoryID" placeholder="ID" value="${category}">
+                        </div>`
+
+                d +=
+                    `<div class="form-group">
+                     <label for="status">
+                         <strong>ID</strong>
+                     </label>
+                     <input type="text" class="form-control" name="id" id="idID" placeholder="ID" value="${id}"
+                         style="cursor: default;pointer-events: none;}">
+                 </div>`
+
+                d +=
+                    `<div class="form-group">
+                     <label for="status">
+                         <strong>Category</strong>
+                     </label>
+                     <input type="text" class="form-control" name="category" id="categoryID" placeholder="ID" value="${category}"
+                         style="cursor: default;pointer-events: none;}">
+                 </div>`
 
 
+                //CLEARING THE PREFILLED DATA
+                $("#divGFG").empty();
+                $("#delete-modalID").empty();
+                //WRITING THE DATA ON MODEL
+                $("#divGFG").append(p);
+                $("#delete-modalID").append(d);
+            });
+        });
+    </script>
 </body>
 
 </html>

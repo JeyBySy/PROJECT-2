@@ -16,7 +16,7 @@ container.style.transform='scale(1)'
 
 const log = (emailVal, passVal)=>{
     if(emailVal == 'companybeylands@gmail.com' && passVal == 'beylandsofficial'){
-        window.location.href = "/admin-page";
+        window.location.href = "/dashboards";
         email.value=''
         pass.value=''
        

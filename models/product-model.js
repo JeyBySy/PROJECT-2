@@ -14,7 +14,8 @@ name:{
     type:String
 },
 price: {
-    type:Number
+    type:Number,
+    min:0
 },
 stocks: {
     type:Number
@@ -22,12 +23,12 @@ stocks: {
 description:{
     type:String
 },
-size:{
-    type:String
-},
-color:{
-    type:String
-},
+// size:{
+//     type:String
+// },
+// color:{
+//     type:String
+// },
 date:{
     type:Date,
     default:()=>Date.now("YYYY-mm-dd")

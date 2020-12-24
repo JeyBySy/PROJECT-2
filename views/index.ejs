@@ -76,12 +76,15 @@
     </div>
     <div class="wrapper">
         <div class="side-container container-fluid">
-            <div class="btn-dash" id="dashID">
-                dashboard
-            </div>
+            <a href="">
+                <div class="btn-dash" id="dashID" style="background: #99ffc2; color: #01976F;">
+                    dashboard
+                </div>
+            </a>
             <a href="/orders">
                 <div class="btn-orders" id="ordersID">
                     Orders
+
                 </div>
             </a>
             <a href="#">
@@ -99,7 +102,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="/#">
+                <a href="/manage-attributes">
                     <div class="btn-product-overlay-2" id="show-manageID">
                         <div class="text">
                             Manage Attributes
@@ -125,11 +128,19 @@
                     <div class="card-body_dash">
                         ORDERS
                     </div>
+                    <%if(orders.length >0){%>
                     <div class="text_dash">
                         <u>
                             <%= orders.length %>
                         </u>
                     </div>
+                    <%}else{%>
+                    <div class="text_dash">
+                        <u>
+                            0
+                        </u>
+                    </div>
+                    <%}%>
                 </div>
                 <br>
                 <div class="card bg-light">
@@ -137,37 +148,45 @@
                     <div class="card-body_dash">
                         STOCK CURRENT VALUE
                     </div>
+                      <%if(typeof(currentValue[0]) != 'undefined') {%>
                     <div class="text_dash">
                         <u>
                             <%= currentValue[0].total %>
                         </u>
                     </div>
-                </div>
-                <br>
-                <div class="card bg-warning">
-                    <div class="card-body_dash">
-                        ZERO STOCK PRODUCTS
-                    </div>
+                    <%}else{%>
                     <div class="text_dash">
                         <u>
-                            <%= zeroStocks %>
+                            0
                         </u>
                     </div>
-                </div>
-                <br>
-                <div class="card bg-secondary">
-                    <div class="card-body_dash">
-                        PRODUCTS
-                    </div>
-                    <div class="text_dash">
-                        <u>
-                            <%= db.length %>
-                        </u>
-                    </div>
-                </div>
-
+                    <%}%>
             </div>
+            <br>
+            <div class="card bg-warning">
+                <div class="card-body_dash">
+                    ZERO STOCK PRODUCTS
+                </div>
+                <div class="text_dash">
+                    <u>
+                        <%= zeroStocks %>
+                    </u>
+                </div>
+            </div>
+            <br>
+            <div class="card bg-secondary">
+                <div class="card-body_dash">
+                    PRODUCTS
+                </div>
+                <div class="text_dash">
+                    <u>
+                        <%= db.length %>
+                    </u>
+                </div>
+            </div>
+
         </div>
+    </div>
     </div>
     </div>
 

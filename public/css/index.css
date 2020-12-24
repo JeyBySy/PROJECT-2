@@ -36,11 +36,12 @@ span {
 .header {
     width: 100%;
     height: auto;
-    background: #01976F;
+    background: #ffffff;
     position: fixed;
     z-index: 2;
     top: 0;
-    border-bottom-style: outset;
+    border-bottom-style: solid;
+    border-bottom-color: #01976F;
     display: flex;
 }
 .header img{
@@ -60,6 +61,7 @@ span {
 }
 .side-container{
     position: fixed;
+    color: white;
     width: 15%;
     height: 100%;
      background:#01976F;
@@ -69,7 +71,7 @@ span {
     font-family: 'Poppins',
     sans-serif;
     padding: 0;
-    /* letter-spacing: 2px; */
+    font-weight: 600;
 }
 .main-container{
     position: absolute;
@@ -86,12 +88,12 @@ span {
     text-align: center;
     padding: 0.5rem;
     border-radius: 5px;
-    background: #54d57f;
+    /* background: #54d57f; */
 }
 
 .btn-dash:hover {
   cursor: pointer;
-  background: #54d57f;
+   background: #99ffc2;
   border-radius: 5px;
   padding: 0.5rem;
   transition: all 0.9s;
@@ -108,7 +110,10 @@ span {
 a:hover,
 a {
     text-decoration: none;
-    color: black;
+    color: rgb(255, 255, 255);
+}
+a:hover{
+    color: #01976F;
 }
 
 .dash-content {

@@ -96,13 +96,13 @@
             </a>
 
             <!-- PRODUCT -->
-            <div class="btn-product" id="productID" style="background: #99ffc2; border-radius: 5px;">
+            <div class="btn-product" id="productID" style="background: #99ffc2; border-radius: 5px; color: #01976F;">
                 products
             </div>
 
             <div class=" btn-product-overlays" id="btn-product-overlayID">
                 <!-- OVERLAY SHOW PRODUCT -->
-                <hr style="margin-left: -15px;">
+
                 <a href="/show-product">
                     <div class="btn-product-overlay-1" id="show-productID">
                         <div class="text">
@@ -111,7 +111,7 @@
                     </div>
                 </a>
                 <!-- OVERLAY MANAGE PRODUCT -->
-                <a href="#">
+                <a href="/manage-attributes">
                     <div class="btn-product-overlay-2" id="show-manageID">
                         <div class="text">
                             Manage Attributes
@@ -163,33 +163,20 @@
                                                 id="stocksID" placeholder="Stocks" data-toggle="tooltip"
                                                 data-placement="top" title="Stocks">
                                         </div>
-                                        <!-- FOR SIZES AND COLOR
-                                        <div class="form-group p-s">
-                                            <select class="form-control" id="sizeID" name="size" data-toggle="tooltip"
-                                                data-placement="top" title="Size">
-                                                <option value="" selected disabled>Size</option>
-                                                <option value="N/A">N/A</option>
-                                                <option value="S">S</option>
-                                                <option value="M">M</option>
-                                                <option value="L">L</option>
-                                            </select>
-                                            <select class="form-control" id="colorID" name="color" data-toggle="tooltip"
-                                                data-placement="top" title="Color">
-                                                <option value="" selected disabled>Color</option>
-                                                <option value="N/A">N/A</option>
-                                                <option value="Red">Red</option>
-                                                <option value="Blue">Blue</option>
-                                                <option value="Green">Green</option>
-                                            </select>
-                                        </div> -->
                                         <!-- FOR CATEGORY -->
                                         <div class="form-group">
                                             <select class="form-control" id="categoryID" name="category"
                                                 data-toggle="tooltip" data-placement="top" title="Category">
                                                 <option value="" selected disabled>Category</option>
-                                                <option value="Janitorial Supplies">Janitorial Supplies</option>
-                                                <option value="Cleaning Materials">Cleaning Materials</option>
-                                                <option value="Cleaning Equipment">Cleaning Equipment</option>
+                                                <%if(category.length >= 0){%>
+                                                <%category.forEach(function(item){%>
+                                                <option value=" <%=item.category%>"> <%=item.category%></option>
+                                                <%})%>
+                                                <%}else{%>
+                                                <option value="" selected disabled>Category</option>
+                                                <%}%>
+                                               
+
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -276,19 +263,10 @@
                             Add Product
                         </button>
                     </div>
-                    <div class="print-export" style="text-align:end;">
-                        <button id="printID">
-                            PRINT
-
-                        </button>
-                        <button>
-                            EXPORT
-                        </button>
-                    </div>
                 </div>
 
                 <!-- Show Product -->
-                <div class="list-items">
+                <div class="list-items container-fluid">
                     <table class="table table-sm table-bordered table-striped" id="display-table">
                         <thead>
                             <tr>
@@ -308,86 +286,89 @@
 
                             <% for (var i = 0; i < db.length; i++) { %>
 
-                            <tr id="data-table">
-                                <td class="tb-id"> <%= db[i]._id %> </td>
-                                <td class="tb-image"> <%= db[i].image  %> </td>
-                                <td class="tb-name"> <%= db[i].name %> </td>
-                                <td class="tb-price"> <%= db[i].price %> </td>
-                                <td class="tb-stocks"> <%= db[i].stocks %> </td>
-                                <td class="tb-category"> <%= db[i].category %> </td>
-                                <td class="tb-description"><%= db[i].description %></td>
-                                <td><%= db[i].date  %> </td>
+                                                <tr id="data-table">
+                                                    <td class="tb-id"> <%= db[i]._id %> </td>
+                                                    <td class="tb-image"> <%= db[i].image  %> </td>
+                                                    <td class="tb-name"> <%= db[i].name %> </td>
+                                                    <td class="tb-price"> <%= db[i].price %> </td>
+                                                    <td class="tb-stocks"> <%= db[i].stocks %> </td>
+                                                    <td class="tb-category"> <%= db[i].category %> </td>
+                                                    <td class="tb-description"><%= db[i].description %></td>
+                                                    <td><%= db[i].date  %> </td>
 
-                                <td>
-                                    <button class="action" data-toggle="modal" data-target="#editModal"
-                                        style="background: transparent; border: none;">
-                                        <img src="/public/Image/editIcon.png" alt="EDIT" srcset="">
-                                    </button>
-                                    <button class="action" data-toggle="modal" data-target="#deleteModal"
-                                        style="background: transparent; border: none;">
-                                        <img src="/public/Image/deleteIcon.png" alt="REMOVE" srcset="">
-                                    </button>
-                                </td>
-                            </tr>
-                            <% } %>
-
-
-                        </tbody>
-
-                    </table>
-                </div>
-            </div>
+                                                    <td>
+                                                        <button class="action" data-toggle="modal"
+                                                            data-target="#editModal"
+                                                            style="background: transparent; border: none;">
+                                                            <img src="/public/Image/editIcon.png" alt="EDIT" srcset="">
+                                                        </button>
+                                                        <button class="action" data-toggle="modal"
+                                                            data-target="#deleteModal"
+                                                            style="background: transparent; border: none;">
+                                                            <img src="/public/Image/deleteIcon.png" alt="REMOVE"
+                                                                srcset="">
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
 
 
-        </div>
-    </div>
+                                                </tbody>
 
-    <script src="/public/js/admin-page.js"></script>
-
-    <script>
-        // FOR TABLE UI
-        $(document).ready(function () {
-            $('#display-table').DataTable({
-                "paging": false,
-                "scrollY": "60vh",
-                "scrollCollapse": true,
-            });
-            $('.dataTables_length').addClass('bs-select');
-
-        });
-
-        // MODALS
-        $(function () {
-            // ON SELECTING ROW 
-            $(".action").click(function () {
-                //FINDING ELEMENTS OF ROWS AND STORING THEM IN VARIABLES 
-                var id =
-                    $(this).parents("tr").find(".tb-id").text().trim();
-                var image =
-                    $(this).parents("tr").find(".tb-image").text().trim();
-                var name =
-                    $(this).parents("tr").find(".tb-name").text().trim();
-                var price =
-                    $(this).parents("tr").find(".tb-price").text().trim();
-                var stocks =
-                    $(this).parents("tr").find(".tb-stocks").text().trim();
-                // var size =
-                //     $(this).parents("tr").find(".tb-size").text().trim();
-                // var color =
-                //     $(this).parents("tr").find(".tb-color").text().trim();
-                var category =
-                    $(this).parents("tr").find(".tb-category").text().trim();
-                var description =
-                    $(this).parents("tr").find(".tb-description").text().trim();
-                var p = "";
-                var for_delete = "";
+                                                </table>
+                                        </div>
+                                    </div>
 
 
-                // CREATING DATA TO SHOW ON MODEL 
-                p +=
-                    `<div class="form-group">   
+                            </div>
+                        </div>
+
+                        <script src="/public/js/admin-page.js"></script>
+
+                        <script>
+                            // FOR TABLE UI
+                            $(document).ready(function () {
+                                $('#display-table').DataTable({
+                                    "paging": false,
+                                    "scrollY": "60vh",
+                                    "scrollCollapse": true,
+                                });
+                                $('.dataTables_length').addClass('bs-select');
+
+                            });
+
+                            // MODALS
+                            $(function () {
+                                // ON SELECTING ROW 
+                                $(".action").click(function () {
+                                    //FINDING ELEMENTS OF ROWS AND STORING THEM IN VARIABLES 
+                                    var id =
+                                        $(this).parents("tr").find(".tb-id").text().trim();
+                                    var image =
+                                        $(this).parents("tr").find(".tb-image").text().trim();
+                                    var name =
+                                        $(this).parents("tr").find(".tb-name").text().trim();
+                                    var price =
+                                        $(this).parents("tr").find(".tb-price").text().trim();
+                                    var stocks =
+                                        $(this).parents("tr").find(".tb-stocks").text().trim();
+                                    // var size =
+                                    //     $(this).parents("tr").find(".tb-size").text().trim();
+                                    // var color =
+                                    //     $(this).parents("tr").find(".tb-color").text().trim();
+                                    var category =
+                                        $(this).parents("tr").find(".tb-category").text().trim();
+                                    var description =
+                                        $(this).parents("tr").find(".tb-description").text().trim();
+                                    var p = "";
+                                    var for_delete = "";
+
+
+                                    // CREATING DATA TO SHOW ON MODEL 
+                                    p +=
+                                        `<div class="form-group">   
                         <center>  
-                        <div class="imgclass">
+                        <div class="imgclass">                
                         <img src="/public/uploads/${image}" alt=${name}>
                         </div>
                         </center>
@@ -397,98 +378,86 @@
                        
                         
                     </div>`
-                p +=
-                    `<div class="form-group">
+                                    p +=
+                                        `<div class="form-group">
                           <input type="text" class="form-control" name="id" id="idID"
                               placeholder="ID" data-toggle="tooltip" data-placement="top" title="ID"
                               value="${id}" readonly>
                       </div>`
 
-                p +=
-                    `<div class="form-group">
+                                    p +=
+                                        `<div class="form-group">
                         <input type="text" class="form-control" name="productName" id="productNameID"
                             placeholder="Product Name" data-toggle="tooltip" data-placement="top" title="Product Name" value="${name}">
                     </div>`
 
-                p +=
-                    `<div class="form-group p-s">
-                        <input type="number" min="0" class="form-control" name="price" id="priceID"
+                                    p +=
+                                        `<div class="form-group p-s">
+                        <input type="number"  min='0' class="form-control" name="price" id="priceID"
                             placeholder="${price}"
-                            data-toggle="tooltip" data-placement="top" title="Price" value="0">
+                            data-toggle="tooltip" data-placement="top" title="Price" value="${price}">
                             
-                        <input type="number" class="form-control" name="stocks" id="stocksID"
+                        <input type="number" class="form-control" min="0" name="stocks" id="stocksID"
                             placeholder="${stocks}"
-                            data-toggle="tooltip" data-placement="top" title="Stocks" value="0">
+                            data-toggle="tooltip" data-placement="top" title="Stocks" value="${stocks}">
                     </div>`
-                // p +=
-                //     ` <div class="form-group p-s">
-                //         <select class="form-control" id="sizeID" name="size" data-toggle="tooltip" data-placement="top"
-                //             title="Size">
-                //             <option value="${size}" selected="selected">${size}</option>
-                //             <option value="N/A">N/A</option>
-                //             <option value="S">S</option>
-                //             <option value="M">M</option>
-                //             <option value="L">L</option>
-                //         </select>
-                //         <select class="form-control" id="colorID" name="color" data-toggle="tooltip"
-                //             data-placement="top" title="Color">
-                //             <option value="${color}" selected="selected">${color}</option>
-                //             <option value="N/A">N/A</option>
-                //             <option value="Red">Red</option>
-                //             <option value="Blue">Blue</option>
-                //             <option value="Green">Green</option>
-                //         </select>
-                //     </div>`;
-                p +=
-                    ` <div class="form-group">
+
+                                    p +=
+                                        ` <div class="form-group">
                         <select class="form-control" id="categoryID" name="category" data-toggle="tooltip"
                             data-placement="top" title="Category">
-                            <option value="" selected disabled>${category}</option>
-                            <option value="Janitorial Supplies">Janitorial Supplies</option>
-                            <option value="Cleaning Materials">Cleaning Materials</option>
-                            <option value="Cleaning Equipment">Cleaning Equipment</option>
+                            <option value="${category}" selected>${category}</option>
+                            <%if(category.length >= 0){%>
+                            <%category.forEach(function(item){%>
+                            <option value=" <%=item.category%>"> <%=item.category%></option>
+                            <%})%>
+                            <%}else{%>
+                            <option value="" selected disabled>Category</option>
+                            <%}%>
                         </select>
                     </div>`;
 
-                p +=
-                    ` <div class="form-group">
+                                    p +=
+                                        ` <div class="form-group">
                         <textarea class="form-control" rows="5" id="descriptionID" placeholder="Description"
                             name="description">${description}</textarea>
                     </div>`
 
-                for_delete +=
-                    ` <center>
+                                    for_delete +=
+                                        ` <center>
                         <div class="imgclass">
                             <img src="/public/uploads/${image}" alt=${name}>
                         </div>
                     </center>
-                    <label for="id">ID</label>
+                    <br>
                     <div class="form-group">
                          <input type="text" class="form-control" name="id" id="idID" placeholder="ID"
-                             data-toggle="tooltip" data-placement="top" title="ID" value="${id}" readonly>
+                             data-toggle="tooltip" data-placement="top" title="ID" value="${id}" readonly style="pointer-events:none;">
                      </div>
-                        <label for="name">Product Name</label>
+                       
                      <div class="form-group">
                          <input type="text" class="form-control" name="name" id="productNameID" placeholder="${name}"
-                             data-toggle="tooltip" data-placement="top" title="Product Name" value="${name}" readonly>
+                             data-toggle="tooltip" data-placement="top" title="Product Name" value="${name}" readonly
+                             style="pointer-events:none;">
                      </div>
-                        <label for="category">Category</label>
+                 
                      <div class="form-group">
                          <input type="text" class="form-control" name="category" id="categoryID" placeholder="${category}"
-                             data-toggle="tooltip" data-placement="top" title="Category" value="${category}" readonly>
+                             data-toggle="tooltip" data-placement="top" title="Category" value="${category}" readonly
+                             style="pointer-events:none;">
                      </div>
                      <center style="color:red;">NOTE: This process will permanently delete this record.<br>Are you sure you?</center>
                      `
 
-                //CLEARING THE PREFILLED DATA 
-                $("#divGFG").empty();
-                $("#delete-modalID").empty();
-                //WRITING THE DATA ON MODEL 
-                $("#divGFG").append(p);
-                $("#delete-modalID").append(for_delete);
-            });
-        });
-    </script>
+                                    //CLEARING THE PREFILLED DATA 
+                                    $("#divGFG").empty();
+                                    $("#delete-modalID").empty();
+                                    //WRITING THE DATA ON MODEL 
+                                    $("#divGFG").append(p);
+                                    $("#delete-modalID").append(for_delete);
+                                });
+                            });
+                        </script>
 </body>
 
 </html>
