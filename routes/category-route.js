@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 
 router.post('/add-category',(req,res)=>{
     // console.log(req.body)
-    if(req.body.name != ""){
+    if(req.body.category != ""){
   var add_category = new Category({
     category:req.body.category,
   })

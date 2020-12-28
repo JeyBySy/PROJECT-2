@@ -266,24 +266,26 @@
                 </div>
 
                 <!-- Show Product -->
-                <div class="list-items container-fluid">
-                    <table class="table table-sm table-bordered table-striped" id="display-table">
+                <div class="list-items">
+                    <table class="table table-sm table-bordered table-striped dt-responsive" cellspacing="0"
+                        width="100%" id="display-table">
+                       <div class="row">
                         <thead>
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Img</th>
-                                <th scope="col">product name</th>
-                                <th scope="col">price</th>
-                                <th scope="col">stocks</th>
-                                <th scope="col">category</th>
-                                <th scope="col">description</th>
-                                <th scope="col">Date Modified</th>
-                                <th scope="col">action</th>
+                                <th>ID</th>
+                                <th>Img</th>
+                                <th>product name</th>
+                                <th>price</th>
+                                <th>stocks</th>
+                                <th>category</th>
+                                <th>description</th>
+                                <th>Date Modified</th>
+                                <th>action</th>
 
                             </tr>
                         </thead>
+                        </div>
                         <tbody>
-
                             <% for (var i = 0; i < db.length; i++) { %>
 
                                                 <tr id="data-table">
@@ -300,13 +302,14 @@
                                                         <button class="action" data-toggle="modal"
                                                             data-target="#editModal"
                                                             style="background: transparent; border: none;">
-                                                            <img src="/public/Image/editIcon.png" alt="EDIT" srcset="">
+                                                            <img src="/public/Image/editIcon.png" class="editIcon"
+                                                                alt="EDIT" srcset="">
                                                         </button>
                                                         <button class="action" data-toggle="modal"
                                                             data-target="#deleteModal"
                                                             style="background: transparent; border: none;">
-                                                            <img src="/public/Image/deleteIcon.png" alt="REMOVE"
-                                                                srcset="">
+                                                            <img src="/public/Image/deleteIcon.png" class="deleteIcon"
+                                                                alt="REMOVE" srcset="">
                                                         </button>
                                                     </td>
                                                 </tr>
@@ -323,6 +326,7 @@
                             </div>
                         </div>
 
+
                         <script src="/public/js/admin-page.js"></script>
 
                         <script>
@@ -330,8 +334,11 @@
                             $(document).ready(function () {
                                 $('#display-table').DataTable({
                                     "paging": false,
-                                    "scrollY": "60vh",
-                                    "scrollCollapse": true,
+                                    "scrollY": "58vh",
+                                    "scrollX": true,
+                                    "responsive": true
+
+
                                 });
                                 $('.dataTables_length').addClass('bs-select');
 

@@ -14,8 +14,9 @@
     </script>
     <link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="public/css/style.css"> -->
-    <link rel="stylesheet" href="public/css/index.css">
     <link rel="stylesheet" href="public/css/orders.css">
+    <link rel="stylesheet" href="public/css/index.css">
+
     <link rel="stylesheet" href="public/css/products.css">
 
     <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
@@ -75,7 +76,7 @@
     </div>
     </div>
     <div class="wrapper">
-        <div class="side-container container-fluid">
+        <div class="side-container">
             <a href="">
                 <div class="btn-dash" id="dashID" style="background: #99ffc2; color: #01976F;">
                     dashboard
@@ -112,81 +113,91 @@
                 <hr style="margin-left: -15px;">
             </div>
         </div>
-    </div>
-
-    <div class="main-container container-fluid">
-        <!-- <div class="order-content-btn">
-                <button type="button" class="btn btn-primary orderBTN">
-                  
-                    ORDERS
-                </button>
-            </div> -->
-        <!-- ORDER LAYOUT -->
-        <div class="dash-content" id="dash-contentID">
-            <div class="card-group">
-                <div class="card bg-primary">
-                    <div class="card-body_dash">
-                        ORDERS
-                    </div>
-                    <%if(orders.length >0){%>
-                    <div class="text_dash">
-                        <u>
-                            <%= orders.length %>
-                        </u>
-                    </div>
-                    <%}else{%>
-                    <div class="text_dash">
-                        <u>
-                            0
-                        </u>
-                    </div>
-                    <%}%>
+        <div class="main-container">
+            <div class="dash-content">
+                <center>
+                    <div class="row container-fluid">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-3">
+                            <div class="card bg-primary">
+                                <%if(orders.length >0){%>
+                                <div class="text_dash">
+                                    <u>
+                                        <%= orders.length %>
+                                    </u>
+                                </div>
+                                <%}else{%>
+                                <div class="text_dash">
+                                    <u>
+                                        0
+                                    </u>
+                                </div>
+                                <%}%>
+                     <div class="card-body_dash">
+                         ORDERS
+                     </div>
                 </div>
                 <br>
-                <div class="card bg-light">
-
-                    <div class="card-body_dash">
-                        STOCK CURRENT VALUE
-                    </div>
+                </div>
+         
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-3">
+                <div class="card bg-light">                
                       <%if(typeof(currentValue[0]) != 'undefined') {%>
+                                <div class="text_dash">
+                                    <u>
+                                        <%= currentValue[0].total %>
+                                    </u>
+                                </div>
+                                <%}else{%>
+                                <div class="text_dash">
+                                    <u>
+                                        0
+                                    </u>
+                                </div>
+                                <%}%>
+                     <div class="card-body_dash">
+                         STOCK CURRENT VALUE
+                     </div>
+                </div>
+                <br>
+                </div>
+         
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-3">
+                <div class="card bg-warning">
+                    
                     <div class="text_dash">
                         <u>
-                            <%= currentValue[0].total %>
-                        </u>
+                            <%= zeroStocks %>
+                                </u>
+                            </div>
+                            <div class="card-body_dash">
+                                ZERO STOCK PRODUCTS
+                            </div>
+                        </div>
+                        <br>
                     </div>
-                    <%}else{%>
-                    <div class="text_dash">
-                        <u>
-                            0
-                        </u>
-                    </div>
-                    <%}%>
-            </div>
-            <br>
-            <div class="card bg-warning">
-                <div class="card-body_dash">
-                    ZERO STOCK PRODUCTS
-                </div>
-                <div class="text_dash">
-                    <u>
-                        <%= zeroStocks %>
-                    </u>
-                </div>
-            </div>
-            <br>
-            <div class="card bg-secondary">
-                <div class="card-body_dash">
-                    PRODUCTS
-                </div>
-                <div class="text_dash">
-                    <u>
-                        <%= db.length %>
-                    </u>
-                </div>
-            </div>
 
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-3">
+
+                        <div class="card bg-secondary">
+
+                            <div class="text_dash">
+                                <u>
+                                    <%= db.length %>
+                                </u>
+                            </div>
+                            <div class="card-body_dash">
+                                PRODUCTS
+                            </div>
+                        </div>
+
+                    </div>
+                </center>
+            </div>
         </div>
-    </div>
+
+
+
+
     </div>
     </div>
 

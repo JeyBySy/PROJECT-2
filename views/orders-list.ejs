@@ -198,20 +198,21 @@
             </div>
             <!-- Show Product -->
             <div class="list-items container-fluid">
-                <table class="table table-sm table-bordered table-striped" id="display-table">
+                <table class="table table-sm table-bordered table-stripeddt-responsive" cellspacing="0" width="100%"
+                    id="display-table">
                     <thead>
                         <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email Address</th>
-                            <th scope="col">Contact</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Product Qty</th>
-                            <th scope="col">Total Price</th>
-                            <th scope="col">Receive</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email Address</th>
+                            <th>Contact</th>
+                            <th>Address</th>
+                            <th>Product Name</th>
+                            <th>Product Qty</th>
+                            <th>Total Price</th>
+                            <th>Receive</th>
+                            <th>Status</th>
+                            <th>Action</th>
 
                         </tr>
                     </thead>
@@ -272,8 +273,9 @@
             $(document).ready(function () {
                 $('#display-table').DataTable({
                     "paging": false,
-                    "scrollY": "60vh",
-                    "scrollCollapse": true,
+                    "scrollY": "58vh",
+                    "scrollX": true,
+                    "responsive": true
                 });
                 $('.dataTables_length').addClass('bs-select');
 

@@ -165,62 +165,66 @@
                                     <div class="order-content-info">
                                         <div class="card bg-light mb-0">
                                             <div class="card-body">
-                                                <div class="card-body-customerInfo">
-                                                    <div class="text">
-                                                        Customer Info
-                                                    </div>
-                                                    <hr>
-                                                    <section class="section-cust-info">
-                                                        <div class="p-s">
-                                                            <label for="name">
-                                                                Name:
-                                                            </label>
+                                                <div class="row container-fluid">
+                                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                                                        <div class="card-body-customerInfo">
+                                                            <div class="text">
+                                                                Customer Info
+                                                            </div>
+                                                            <hr>
+                                                            <section class="section-cust-info">
+                                                                <div class="p-s">
+                                                                    <label for="name">
+                                                                        Name:
+                                                                    </label>
 
-                                                            <span class="cust_info"
-                                                                style="text-transform: capitalize;"><%= items.name %></span>
-                                                        </div>
-                                                        <div class="p-s">
-                                                            <label for="email">
-                                                                Email:
-                                                            </label>
-                                                            <span class="cust_info"
-                                                                style="text-transform: none;"><%= items.email %></span>
-                                                        </div>
-                                                        <div class="p-s">
-                                                            <label for="number">
-                                                                Contact No.:
-                                                            </label>
-                                                            <span class="cust_info"><%= items.contact %></spa>
-                                                        </div>
-                                                        <div class="p-s">
-                                                            <label for="number">
-                                                                Address:
-                                                            </label>
-                                                            <span class="cust_info"
-                                                                style="text-transform: capitalize;"><%= items.address %>
-                                                                </spa>
-                                                        </div>
-                                                        <div class="p-s">
-                                                            <label for="number">
-                                                                Receive:
-                                                            </label>
-                                                            <%if(items.receive == 'Delivery'){%>
-                                                            <span class="cust_info text-danger">
-                                                                <strong>
-                                                                    <%= items.receive %>
-                                                                </strong>
-                                                            </span>
-                                                            <%}else{%>
-                                                            <span class="cust_info text-info">
-                                                                <strong>
-                                                                    <%= items.receive %>
-                                                                </strong>
-                                                            </span>
-                                                            <%}%>
+                                                                    <span class="cust_info"
+                                                                        style="text-transform: capitalize;"><%= items.name %></span>
+                                                                </div>
+                                                                <div class="p-s">
+                                                                    <label for="email">
+                                                                        Email:
+                                                                    </label>
+                                                                    <span class="cust_info"
+                                                                        style="text-transform: none;"><%= items.email %></span>
+                                                                </div>
+                                                                <div class="p-s">
+                                                                    <label for="number">
+                                                                        Contact No.:
+                                                                    </label>
+                                                                    <span class="cust_info"><%= items.contact %></spa>
+                                                                </div>
+                                                                <div class="p-s">
+                                                                    <label for="number">
+                                                                        Address:
+                                                                    </label>
+                                                                    <span class="cust_info"
+                                                                        style="text-transform: capitalize;"><%= items.address %>
+                                                                        </spa>
+                                                                </div>
+                                                                <div class="p-s">
+                                                                    <label for="number">
+                                                                        Receive:
+                                                                    </label>
+                                                                    <%if(items.receive == 'Delivery'){%>
+                                                                    <span class="cust_info text-danger">
+                                                                        <strong>
+                                                                            <%= items.receive %>
+                                                                        </strong>
+                                                                    </span>
+                                                                    <%}else{%>
+                                                                    <span class="cust_info text-info">
+                                                                        <strong>
+                                                                            <%= items.receive %>
+                                                                        </strong>
+                                                                    </span>
+                                                                    <%}%>
                                                             
                                                         </div>
                                                     </section>
                                                 </div>
+                                                </div>
+                                                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
                                                 <div class="card-body-totalItems">
                                                     <div class="text">
                                                         Item/s
@@ -229,18 +233,20 @@
                                                     <table class="table" style="width: 100%;">
                                                         <tbody>
                                                             <%for(let i = 0; i <= items.productName.length;i++){%>
-                                                            <tr>
-                                                                <td>
-                                                                    <%= items.productName[i]%>
-                                                                </td>
-                                                                <td>
-                                                                    <%= items.productQty[i]%>
-                                                                </td>
-                                                            </tr>
-                                                            <%}%>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <%= items.productName[i]%>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= items.productQty[i]%>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <%}%>
                                                         </tbody>
                                                         </table>
                                                 </div>
+                                                </div>
+                                                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
                                                 <div class="card-body-action">
                                                     <div class="text">
                                                         Action
@@ -248,13 +254,15 @@
                                                     <hr>
                                                     <div class="cust_action">
                                                             <form action="/orders/ready/<%=items._id%>" method="POST">
-                                                            <button type=" button" class="btn btn-success"
-                                                                data-item-id="<%= items.id %>">
-                                                                Ready
-                                                            </button>
-                                                            </form>
-                                                        </div>
+                                                                    <button type=" button" class="btn btn-success"
+                                                                        data-item-id="<%= items.id %>">
+                                                                        Ready
+                                                                    </button>
+                                                                    </form>
+                                                                </div>
 
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
